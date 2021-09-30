@@ -40,11 +40,12 @@
   }
 
   .form-control:focus {
-    background-color: #eff9ff;
+    box-shadow: none;
   }
   #symbol {
     height: 50px;
     border-radius: 2px;
+    box-shadow: none;
   }
 
   .form-control {
@@ -64,11 +65,16 @@
     color: #79ccf0;
   }
 
+
   #login {
     margin-left: 50px;
     margin-top: 9px;
     height: 35px;
     font-size: 14px;
+  }
+
+  #login:focus {
+    box-shadow: none;
   }
 }
 ::ng-deep .modal-content {
