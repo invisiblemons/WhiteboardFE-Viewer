@@ -1,0 +1,76 @@
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" href="#"
+      ><img src="../../../assets/images/Logo-trans.png" alt="Whiteboard"
+    /></a>
+  </li>
+  <li class="nav-item">
+    <form
+      onsubmit="event.preventDefault()"
+      class="form-inline my-2 my-lg-0"
+      id="school"
+    >
+      <div class="input-group mb-3">
+        <span class="input-group-text">Tìm</span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="một trường đại học..."
+          aria-describedby="Find-School"
+          id="text-place"
+        />
+      </div>
+      <button id="symbol" class="btn my-2 my-sm-0" type="submit">
+        <i class="pi pi-search"></i>
+      </button>
+    </form>
+  </li>
+  <li class="nav-item">
+    <form
+      onsubmit="event.preventDefault()"
+      class="form-inline my-2 my-lg-0"
+      id="location"
+    >
+      <div class="input-group mb-3">
+        <span class="input-group-text">Tại</span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="một thành phố hoặc huyện"
+          aria-describedby="Find-School"
+          id="text-place"
+        />
+      </div>
+      <button id="symbol" class="btn my-2 my-sm-0" type="submit">
+        <i class="pi pi-map-marker"></i>
+      </button>
+    </form>
+  </li>
+  <li class="nav-item">
+    <button
+      type="button"
+      id="login"
+      class="btn btn-outline-primary"
+      (click)="openVerticallyCentered(content)"
+    >
+      Đăng Nhập
+    </button>
+  </li>
+</ul>
+
+<ng-template #content let-modal >
+    <div class="modal-header" >
+      <h4 class="modal-title">Đăng Nhập</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <i class="pi pi-times" style="font-size: 1rem"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+        <a href="#" class="social_box google">
+            <span class="icon"><img src="../../../assets/images/btn_google_light_normal_ios.svg" alt=""></span>
+            <span class="icon_title">Connect with Google</span>
+          </a>
+    </div>
+  </ng-template>
+
+
