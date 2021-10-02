@@ -13,16 +13,9 @@ import { ShellComponent } from './shared/shell/shell.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './auth.service';
+import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAv6X14p4MsNYe77SOrsY8De1YSGr-66a0",
-  authDomain: "whiteboardswd.firebaseapp.com",
-  projectId: "whiteboardswd",
-  storageBucket: "whiteboardswd.appspot.com",
-  messagingSenderId: "546664115615",
-  appId: "1:546664115615:web:931ee95b7bd3e7823da1aa",
-  measurementId: "G-MD39G9K463"
-};
 
 @NgModule({
   declarations: [
@@ -36,8 +29,9 @@ const firebaseConfig = {
     BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
