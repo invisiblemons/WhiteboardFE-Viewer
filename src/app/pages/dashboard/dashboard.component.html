@@ -2,172 +2,168 @@
   <div class="container">
     <div class="row">
       <div class="col-md-5 col-sm-12">
-        <div class="row">
-          <div class="fixed">
+        <div class="row sticky-top">
           <div class="col-sm-12">
-            <p-menu [model]="items"></p-menu>
+            <p-menu [model]="items" ></p-menu></div>
+
+          <div class="col-sm-6">
+            <div class="card">
+              <ng-container *ngIf="isShow; else loadDataUni">
+                <div class="p-field p-col-12 p-md-6">
+                  <p-skeleton styleClass="p-mb-2"></p-skeleton>
+                  <p-skeleton width="5rem" styleClass="p-mb-2"></p-skeleton>
+                  <p-skeleton height="2rem" styleClass="p-mb-2"></p-skeleton>
+                </div>
+              </ng-container>
+              <ng-template #loadDataUni>
+                <div class="card-body styleBg">
+                  <div class="profile-wrap animated fadeIn">
+                    <div class="info-wrap">
+                      <div class="avatar-wrap">
+                        <img src="{{ universities[1].image }}" alt="avatar" />
+                      </div>
+                      <span class="user-name"
+                        ><i class="pi pi-briefcase mt-2 mr-2"></i>Đại học</span
+                      >
+                      <span class="user-name">{{ universities[1].name }}</span>
+                      <span class="buttonFollow">
+                        <button
+                          pButton
+                          pRipple
+                          type="button"
+                          label="Theo dõi"
+                          class="p-button-raised"
+                          style="
+                            background-color: aliceblue;
+                            color: black;
+                            border-radius: 10px;
+                            border: 1px solid grey !important;
+                          "
+                        ></button>
+                      </span>
+                    </div>
+                    <div class="profile-head">
+                      <img
+                        src="{{ universities[1].image }}"
+                        alt="profile-head-bg"
+                        class="profile-head-bg"
+                      />
+                    </div>
+                  </div>
+                  <div class="card-footer text-center">
+                    <div class="extendUser">
+                      <div class="card">
+                        <p-avatarGroup styleClass="p-mb-3">
+                          <p-avatar
+                            image="https://i.pinimg.com/236x/ad/15/4c/ad154cd33e4fc34d4a492966db9e9e37.jpg"
+                            size="large"
+                            shape="circle"
+                          ></p-avatar>
+                          <p-avatar
+                            image="https://i.pinimg.com/236x/76/18/38/761838420398ec0b0b412b46b71f2ab2.jpg"
+                            size="large"
+                            shape="circle"
+                          ></p-avatar>
+                          <p-avatar
+                            label="+2"
+                            shape="circle"
+                            size="large"
+                            [style]="{
+                              'background-color': '#0099F3',
+                              color: '#ffffff'
+                            }"
+                          ></p-avatar
+                          ><span style="font-size: x-small; color: gray"
+                            >người cũng đang theo dõi</span
+                          >
+                        </p-avatarGroup>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
           </div>
 
-          
-            <div class="col-sm-6">
-              <div class="card">
-                <ng-container *ngIf="isShow; else loadDataUni">
-                  <div class="p-field p-col-12 p-md-6">
-                    <p-skeleton styleClass="p-mb-2"></p-skeleton>
-                    <p-skeleton width="5rem" styleClass="p-mb-2"></p-skeleton>
-                    <p-skeleton height="2rem" styleClass="p-mb-2"></p-skeleton>
-                  </div>
-                </ng-container>
-                <ng-template #loadDataUni>
-                  <div class="card-body styleBg">
-                    <div class="profile-wrap animated fadeIn">
-                      <div class="info-wrap">
-                        <div class="avatar-wrap">
-                          <img src="{{ universities[1].image }}" alt="avatar" />
-                        </div>
-                        <span class="user-name"
-                          ><i class="pi pi-briefcase mt-2 mr-2"></i>Đại học</span
-                        >
-                        <span class="user-name">{{ universities[1].name }}</span>
-                        <span class="buttonFollow">
-                          <button
-                            pButton
-                            pRipple
-                            type="button"
-                            label="Theo dõi"
-                            class="p-button-raised"
-                            style="
-                              background-color: aliceblue;
-                              color: black;
-                              border-radius: 10px;
-                              border: 1px solid grey!important;
-                            "
-                          ></button>
-                        </span>
+          <div class="col-sm-6">
+            <div class="card">
+              <ng-container *ngIf="isShow; else loadDataUnis">
+                <div class="p-field p-col-12 p-md-6">
+                  <p-skeleton styleClass="p-mb-2"></p-skeleton>
+                  <p-skeleton width="5rem" styleClass="p-mb-2"></p-skeleton>
+                  <p-skeleton height="2rem" styleClass="p-mb-2"></p-skeleton>
+                </div>
+              </ng-container>
+              <ng-template #loadDataUnis>
+                <div class="card-body styleBg">
+                  <div class="profile-wrap animated fadeIn">
+                    <div class="info-wrap">
+                      <div class="avatar-wrap">
+                        <img src="{{ universities[0].image }}" alt="avatar" />
                       </div>
-                      <div class="profile-head">
-                        <img
-                          src="{{ universities[1].image }}"
-                          alt="profile-head-bg"
-                          class="profile-head-bg"
-                        />
-                      </div>
+                      <span class="user-name"
+                        ><i class="pi pi-briefcase mt-2 mr-2"></i>Đại học</span
+                      >
+                      <span class="user-name">{{ universities[0].name }}</span>
+                      <span class="buttonFollow">
+                        <button
+                          pButton
+                          pRipple
+                          type="button"
+                          label="Theo dõi"
+                          class="p-button-raised"
+                          style="
+                            background-color: aliceblue;
+                            color: black;
+                            border-radius: 10px;
+                            border: 1px solid grey !important;
+                          "
+                        ></button>
+                      </span>
                     </div>
-                    <div class="card-footer text-center">
-                      <div class="extendUser">
-                        <div class="card">
-                          <p-avatarGroup styleClass="p-mb-3">
-                            <p-avatar
-                              image="https://i.pinimg.com/236x/ad/15/4c/ad154cd33e4fc34d4a492966db9e9e37.jpg"
-                              size="large"
-                              shape="circle"
-                            ></p-avatar>
-                            <p-avatar
-                              image="https://i.pinimg.com/236x/76/18/38/761838420398ec0b0b412b46b71f2ab2.jpg"
-                              size="large"
-                              shape="circle"
-                            ></p-avatar>
-                            <p-avatar
-                              label="+2"
-                              shape="circle"
-                              size="large"
-                              [style]="{
-                                'background-color': '#0099F3',
-                                color: '#ffffff'
-                              }"
-                            ></p-avatar
-                            ><span style="font-size: x-small; color: gray"
-                              >người cũng đang theo dõi</span
-                            >
-                          </p-avatarGroup>
-                        </div>
+                    <div class="profile-head">
+                      <img
+                        src="{{ universities[0].image }}"
+                        alt="profile-head-bg"
+                        class="profile-head-bg"
+                      />
+                    </div>
+                  </div>
+                  <div class="card-footer text-center">
+                    <div class="extendUser">
+                      <div class="card">
+                        <p-avatarGroup styleClass="p-ml-4">
+                          <p-avatar
+                            image="https://i.pinimg.com/236x/b0/7f/73/b07f7378808e893c16866ea09114c808.jpg"
+                            size="large"
+                            shape="circle"
+                          ></p-avatar>
+                          <p-avatar
+                            image="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
+                            size="large"
+                            shape="circle"
+                          ></p-avatar>
+                          <p-avatar
+                            label="+2"
+                            shape="circle"
+                            size="large"
+                            [style]="{
+                              'background-color': '#0099F3',
+                              color: '#ffffff'
+                            }"
+                          ></p-avatar
+                          ><span style="font-size: x-small; color: gray"
+                            >người cũng đang theo dõi</span
+                          >
+                        </p-avatarGroup>
                       </div>
                     </div>
                   </div>
-                </ng-template>
-              </div>
+                </div>
+              </ng-template>
             </div>
-  
-            <div class="col-sm-6">
-              <div class="card">
-                <ng-container *ngIf="isShow; else loadDataUnis">
-                  <div class="p-field p-col-12 p-md-6">
-                    <p-skeleton styleClass="p-mb-2"></p-skeleton>
-                    <p-skeleton width="5rem" styleClass="p-mb-2"></p-skeleton>
-                    <p-skeleton height="2rem" styleClass="p-mb-2"></p-skeleton>
-                  </div>
-                </ng-container>
-                <ng-template #loadDataUnis>
-                  <div class="card-body styleBg">
-                    <div class="profile-wrap animated fadeIn">
-                      <div class="info-wrap">
-                        <div class="avatar-wrap">
-                          <img src="{{ universities[0].image }}" alt="avatar" />
-                        </div>
-                        <span class="user-name"
-                          ><i class="pi pi-briefcase mt-2 mr-2"></i>Đại học</span
-                        >
-                        <span class="user-name">{{ universities[0].name }}</span>
-                        <span class="buttonFollow">
-                          <button
-                            pButton
-                            pRipple
-                            type="button"
-                            label="Theo dõi"
-                            class="p-button-raised"
-                            style="
-                              background-color: aliceblue;
-                              color: black;
-                              border-radius: 10px;
-                              border: 1px solid grey!important;
-                            "
-                          ></button>
-                        </span>
-                      </div>
-                      <div class="profile-head">
-                        <img
-                          src="{{ universities[0].image }}"
-                          alt="profile-head-bg"
-                          class="profile-head-bg"
-                        />
-                      </div>
-                    </div>
-                    <div class="card-footer text-center">
-                      <div class="extendUser">
-                        <div class="card">
-                          <p-avatarGroup styleClass="p-ml-4">
-                            <p-avatar
-                              image="https://i.pinimg.com/236x/b0/7f/73/b07f7378808e893c16866ea09114c808.jpg"
-                              size="large"
-                              shape="circle"
-                            ></p-avatar>
-                            <p-avatar
-                              image="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
-                              size="large"
-                              shape="circle"
-                            ></p-avatar>
-                            <p-avatar
-                              label="+2"
-                              shape="circle"
-                              size="large"
-                              [style]="{
-                                'background-color': '#0099F3',
-                                color: '#ffffff'
-                              }"
-                            ></p-avatar
-                            ><span style="font-size: x-small; color: gray"
-                              >người cũng đang theo dõi</span
-                            >
-                          </p-avatarGroup>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </ng-template>
-              </div>
-            </div>
-            <ng-container *ngIf="showUser">
-            
+          </div>
+          <ng-container *ngIf="showUser">
             <div class="col-sm-12">
               <div class="card card-profile">
                 <div class="card-avatar border-white">
@@ -177,105 +173,72 @@
                 </div>
                 <div class="card-body">
                   <h4 class="card-title">{{ userName }}</h4>
-                  <h6 class="card-category">Trường THPT cấp 3</h6>
-                  <p class="card-description">
-                    Yêu những review chân thực
-                  </p>
+                  <h5 class="card-category">Trường THPT Lê Khiết</h5>
+                  <h6 class="card-category">Ngày sinh: 20/03/2000</h6>
+                  <p class="card-description">Yêu những review chân thực</p>
                 </div>
               </div>
             </div>
           </ng-container>
-          </div>
+        </div>
 
         <ng-container *ngIf="showNotify">
-          
           <div class="col-sm-12">
             <div class="card card-profile">
-              <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-header">
-                    <span>Notification</span>
-                    <div class="mobile-close">
-                        <h5>close</h5>
+              <div class="dropdown-header">
+                <h4 style="font-weight: 600">Thông báo</h4>
+              </div>
+              <ul class="friend-list">
+                <li class="d-block">
+                  <div>
+                    <div class="media">
+                      <p-avatar
+                        image="https://i.pinimg.com/236x/b0/7f/73/b07f7378808e893c16866ea09114c808.jpg"
+                        size="large"
+                        shape="circle"
+                      ></p-avatar>
+                      <div class="media-body">
+                        <div class="float-left">
+                          <h5 class="mt-0">
+                            <span>Nguyễn Bá Hùng</span> đã đăng bài đánh giá mới
+                            về trường đại học Bách Khoa
+                          </h5>
+                          <h6>8 giờ trước</h6>
+                        </div>
+                      </div>
                     </div>
-                </div>
-                <div class="dropdown-content">
-                    <ul class="friend-list">
-                        <li class="d-block">
-                            <div>
-                                <div class="media">
-                                    <img src="https://i.pinimg.com/236x/b0/7f/73/b07f7378808e893c16866ea09114c808.jpg" alt="user">
-                                    <div class="media-body">
-                                        <div>
-                                            <h5 class="mt-0"><span>Paige Turner</span> send you a
-                                                friend request
-                                            </h5>
-                                            <h6> 1 mutual friend</h6>
-                                            <div class="action-btns">
-                                                <button type="button" class="btn btn-solid"><i
-                                                        data-feather="check"></i></button>
-                                                <button type="button" class="btn btn-solid ms-1"><i
-                                                        data-feather="x"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="media">
-                                    <img src="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg" alt="user">
-                                    <div class="media-body">
-                                        <div>
-                                            <h5 class="mt-0"><span>Bob Frapples</span> add their
-                                                stories
-                                            </h5>
-                                            <h6>8 hour ago</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="media">
-                                    <img src="https://i.pinimg.com/236x/76/18/38/761838420398ec0b0b412b46b71f2ab2.jpg" alt="user">
-                                    <div class="media-body">
-                                        <div>
-                                            <h5 class="mt-0"><span>Josephin water</span> have
-                                                birthday today
-                                            </h5>
-                                            <h6>sun at 5.55 AM</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="media">
-                                    <img src="https://i.pinimg.com/236x/ad/15/4c/ad154cd33e4fc34d4a492966db9e9e37.jpg" alt="user">
-                                    <div class="media-body">
-                                        <div>
-                                            <h5 class="mt-0"><span>Petey Cruiser</span> added a new
-                                                photo
-                                            </h5>
-                                            <h6>sun at 5.40 AM</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                  </div>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="media">
+                      <p-avatar
+                        image="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
+                        size="large"
+                        shape="circle"
+                      ></p-avatar>
+                      <div class="media-body">
+                        <div class="float-left">
+                          <h5 class="mt-0">
+                            <span>Nguyễn Bá Hùng</span> đã đăng bài đánh giá mới
+                            về trường đại học Bách Khoa
+                          </h5>
+                          <h6>8 hour ago</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </ng-container>
-        </div>
       </div>
       <div class="col-md-7 col-sm-12 review">
-        <app-card [headerContent]="'Duyệt bài review của Reviewer'" class="reviewCard">
+        <app-card
+          [headerContent]="'Duyệt bài review của Reviewer'"
+          class="reviewCard"
+        >
           <ng-container *ngIf="isShow; else loadData">
             <div class="p-field p-col-12 p-md-6">
               <div class="custom-skeleton p-p-4">
@@ -366,8 +329,11 @@
                     <div class="pull-right">
                       <h6 class="text-muted">21 giờ 00 phút 25/09/2021</h6>
                     </div>
-                    <br>
-                    <h5>Đại học {{ reviewer.universityName}} - {{ reviewer.campusName}}</h5>
+                    <br />
+                    <h5>
+                      Đại học {{ reviewer.universityName }} -
+                      {{ reviewer.campusName }}
+                    </h5>
                     <!-- body review -->
                     <div class="row">
                       <p-tabView>
@@ -391,7 +357,9 @@
                                     ></p-rating>
                                   </dd>
                                   <dt class="col-sm-4">Đánh giá chi tiết</dt>
-                                  <ng-container *ngFor="let detail of review.detail">
+                                  <ng-container
+                                    *ngFor="let detail of review.detail"
+                                  >
                                     <dd class="col-sm-12 col-sm-offset-3">
                                       <div class="row">
                                         <div class="col-sm-4 offset-3">
@@ -399,24 +367,27 @@
                                         </div>
                                         <div class="col-sm-5">
                                           <div>
-                                              <p-rating
-                                                [ngModel]="detail.rating"
-                                                readonly="true"
-                                                stars="5"
-                                                [cancel]="false"
-                                              ></p-rating
-                                            >
+                                            <p-rating
+                                              [ngModel]="detail.rating"
+                                              readonly="true"
+                                              stars="5"
+                                              [cancel]="false"
+                                            ></p-rating>
                                           </div>
                                         </div>
                                       </div>
                                     </dd>
                                   </ng-container>
-        
-                                  <dt class="col-sm-3 text-truncate">Ưu điểm</dt>
+
+                                  <dt class="col-sm-3 text-truncate">
+                                    Ưu điểm
+                                  </dt>
                                   <dd class="col-sm-9">
                                     {{ review.pros }}
                                   </dd>
-                                  <dt class="col-sm-3 text-truncate">Nhược điểm</dt>
+                                  <dt class="col-sm-3 text-truncate">
+                                    Nhược điểm
+                                  </dt>
                                   <dd class="col-sm-9">
                                     {{ review.cons }}
                                   </dd>
@@ -430,7 +401,10 @@
                                   [autoplayInterval]="3000"
                                   [circular]="false"
                                 >
-                                  <ng-template let-pictureForReview pTemplate="item">
+                                  <ng-template
+                                    let-pictureForReview
+                                    pTemplate="item"
+                                  >
                                     <div class="review-item">
                                       <div class="review-item-content">
                                         <div class="p-mb-3">
@@ -451,65 +425,114 @@
                     </div>
 
                     <div class="media-footer">
-                      <hr style="font-weight: 600; margin-right: 15px;">
-                      <button pButton pRipple type="button" class=" thumb-up p-button-outlined p-button-secondary"><i class="pi pi-thumbs-up mr-2"></i>332</button>
-                      <button pButton pRipple type="button" class=" thumb-down p-button-outlined p-button-secondary"><i class="pi pi-thumbs-down mr-2"></i>2</button>
-                      <button pButton pRipple type="button" class="p-button-outlined p-button-secondary float-right mr-5" style="border: none;" (click)="showCommentSection()"><i class="pi pi-comments mr-2"></i> Bình luận</button>
+                      <hr style="font-weight: 600; margin-right: 15px" />
+                      <button
+                        pButton
+                        pRipple
+                        type="button"
+                        class="thumb-up p-button-outlined p-button-secondary"
+                      >
+                        <i class="pi pi-thumbs-up mr-2"></i>332
+                      </button>
+                      <button
+                        pButton
+                        pRipple
+                        type="button"
+                        class="thumb-down p-button-outlined p-button-secondary"
+                      >
+                        <i class="pi pi-thumbs-down mr-2"></i>2
+                      </button>
+                      <button
+                        pButton
+                        pRipple
+                        type="button"
+                        class="
+                          p-button-outlined p-button-secondary
+                          float-right
+                          mr-5
+                        "
+                        style="border: none"
+                        (click)="showCommentSection()"
+                      >
+                        <i class="pi pi-comments mr-2"></i> Bình luận
+                      </button>
                       <!-- comment -->
-              <ng-container *ngIf="showComment">
-              
-                <div class="row">
-                  <div class="col mx-auto">
-                    <div class="media-area mr-5">
-                      <div class="media">
-                            <a class="pull-left" href="javascript:void(0)">
-                             <div class="avatar">
-                                  <img class="media-object" src="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg" alt="..."/>
-                             </div>
-                            </a>
-                            <div class="media-body">
-                              <h5 class="media-heading">Thành Đạt</h5>
-                              <div class="pull-right">
-                                  <h6 class="text-muted">8 giờ 15 phút 26/10/2021</h6>
-                                  <a href="javascript:void(0)" class="btn btn-info btn-link pull-right " (click)="showReplyCommentSection()"> <i class="fa fa-reply"></i> Reply</a>
-  
-                              </div>
-                              <p>Bài đánh giá tuyệt vời</p>
-                              <p>Cảm ơn chia sẻ của bạn</p>
+                      <ng-container *ngIf="showComment">
+                        <div class="row">
+                          <div class="col mx-auto">
+                            <div class="media-area mr-5">
+                              <div class="media">
+                                <a class="pull-left" href="javascript:void(0)">
+                                  <div class="avatar">
+                                    <img
+                                      class="media-object"
+                                      src="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
+                                      alt="..."
+                                    />
+                                  </div>
+                                </a>
+                                <div class="media-body">
+                                  <h5 class="media-heading">Thành Đạt</h5>
+                                  <div class="pull-right">
+                                    <h6 class="text-muted">
+                                      8 giờ 15 phút 26/10/2021
+                                    </h6>
+                                    <a
+                                      href="javascript:void(0)"
+                                      class="btn btn-info btn-link pull-right"
+                                      (click)="showReplyCommentSection()"
+                                    >
+                                      <i class="fa fa-reply"></i> Reply</a
+                                    >
+                                  </div>
+                                  <p>Bài đánh giá tuyệt vời</p>
+                                  <p>Cảm ơn chia sẻ của bạn</p>
 
-                              <br>
-                              <ng-container *ngIf="showReplyComment">
-                               <div class="media media-post">
-                                       <a class="pull-left author" href="javascript:void(0)">
+                                  <br />
+                                  <ng-container *ngIf="showReply">
+                                    <div class="media media-post">
+                                      <a
+                                        class="pull-left author"
+                                        href="javascript:void(0)"
+                                      >
                                         <div class="avatar">
-                                              <img class="media-object" alt="64x64" src="{{ avatarUrl }}">
+                                          <img
+                                            class="media-object"
+                                            alt="64x64"
+                                            src="{{ avatarUrl }}"
+                                          />
                                         </div>
-                                    </a>
-                                    <div class="media-body">
-                                          <textarea class="form-control" placeholder="Trả lời bình luận ..." rows="4"></textarea>
-                                          <div class="media-footer">
-                                               <a href="javascript:void(0)" class="btn btn-info pull-right">Reply</a>
-                                          </div>
+                                      </a>
+                                      <div class="media-body">
+                                        <textarea
+                                          class="form-control"
+                                          placeholder="Trả lời bình luận ..."
+                                          rows="4"
+                                        ></textarea>
+                                        <div class="media-footer">
+                                          <a
+                                            href="javascript:void(0)"
+                                            class="btn btn-info pull-right"
+                                            >Reply</a
+                                          >
+                                        </div>
+                                      </div>
                                     </div>
-                               </div> <!-- end media-post -->
-                              </ng-container>
+                                    <!-- end media-post -->
+                                  </ng-container>
+                                </div>
+                              </div>
+                              <!-- end media -->
                             </div>
-                      </div> <!-- end media -->
-  
-                      
-                      
-                  </div>
-                  </div>
-                </div>
-              </ng-container> <!--  end Comment -->
+                          </div>
+                        </div>
+                      </ng-container>
+                      <!--  end Comment -->
                     </div>
-
-                    
                   </div>
                 </div>
                 <!-- end media -->
               </div>
-              
             </div>
           </ng-template>
         </app-card>

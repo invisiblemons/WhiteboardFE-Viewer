@@ -446,7 +446,8 @@ dl {
   font-size: 0.875rem;
   color: #6c757d;
   white-space: nowrap; }
-
-  .fixed {
-    
-  }
+  .fixed{
+    position: sticky;
+    top:0;
+    z-index: 999;
+}

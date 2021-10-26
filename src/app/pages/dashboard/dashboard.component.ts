@@ -46,6 +46,7 @@ export class DashboardComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.showComment = false;
+    this.showReply = false;
     this.showUser = false;
     this.showNotify = false;
     let review = [
@@ -208,10 +209,10 @@ export class DashboardComponent implements OnInit {
   }
 
   showReplyCommentSection() {
-    if (!this.showComment) {
-      this.showComment = true;
+    if (!this.showReply) {
+      this.showReply = true;
     } else {
-      this.showComment = false;
+      this.showReply = false;
     }
   }
 

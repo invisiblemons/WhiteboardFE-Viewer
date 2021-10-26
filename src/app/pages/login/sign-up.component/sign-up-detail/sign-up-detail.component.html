@@ -1,0 +1,64 @@
+<p-dialog
+    [(visible)]="signUpDialog"
+    [style]="{ width: '600px' }"
+    header="Thông tin người dùng"
+    [modal]="true"
+    styleClass="p-fluid dialog"
+    (onHide)="hideSignUpDialog()"
+  >
+    <ng-template pTemplate="content">
+        <div class="pull-left">
+            <div class="avatar">
+              <img
+                class="media-object"
+                src="{{ user.avatarURL }}"
+                alt="{{ user.name }}"
+              />
+            </div>
+        </div>
+        <h4 style="font-weight: 700;color: #4D5F7F; margin-top: 20px; margin-bottom: 46px;" class="ml-3">{{ user.name }}</h4>
+      
+      <div class="p-field mt-3">
+        <label for="university">Chọn trường đại học</label>
+        <p-dropdown
+          id="university"
+          [options]="universities"
+          [(ngModel)]="university"
+          placeholder="Chọn truờng đại học"
+          optionLabel="name"
+        ></p-dropdown>
+      </div>
+
+      <div class="p-formgrid p-grid">
+        <div class="p-field p-col-12 mt-3">
+          <label for="startDay">Ngày sinh</label>
+          <p-calendar
+          appendTo="body"
+            dateFormat="dd-mm-yy"
+            [showIcon]="true"
+            inputId="startDay"
+          ></p-calendar>
+        </div>
+      </div>
+    </ng-template>
+      
+
+    <ng-template pTemplate="footer">
+      <button
+        pButton
+        pRipple
+        label="Cancel"
+        icon="pi pi-times"
+        class="p-button-text"
+        (click)="hideSignUpDialog()"
+      ></button>
+      <button
+        pButton
+        pRipple
+        label="Save"
+        icon="pi pi-check"
+        class="p-button-text"
+        (click)="saveSignUp()"
+      ></button>
+    </ng-template>
+  </p-dialog>

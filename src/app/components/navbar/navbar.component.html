@@ -22,7 +22,7 @@
             >
               <div class="input-group mb-3">
                 <span class="input-group-text">Tìm</span>
-                <input type="text" placeholder="một trường đại học..." class="form-control">
+                <input type="text" placeholder="bài đánh giá của trường ..." class="form-control">
                 <div class="input-group-append">
                   <span class="input-group-text"><i class="pi pi-search"></i></span>
                 </div>
@@ -48,7 +48,7 @@
             </div>
           </ng-container>
           <ng-template #signin>
-            <button pButton pRipple type="button" label="Sign Up"  class="mr-2 p-button-sm"></button>
+            <button pButton pRipple type="button" label="Sign Up" [routerLink]="['/auth/sign-up']" class="mr-2 p-button-sm"></button>
             <button pButton pRipple type="button" label="Sign In" [routerLink]="['/auth']" class="p-button-outlined p-button-sm"></button>
           </ng-template>
           

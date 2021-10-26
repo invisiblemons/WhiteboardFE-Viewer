@@ -1,0 +1,62 @@
+<div class="full-page login-page ">
+    <div class=" content" style="margin-top: 10px;">
+      <div class=" container">
+        <div class="col-lg-4 col-md-6"></div>
+        <div class=" col-lg-4 col-md-6 ml-auto mr-auto">
+          <form class=" form">
+            <div class=" card card-login card-white">
+              <div class=" card-header">
+                <img alt="" src="assets/img/card-info.png" />
+  
+                <h1 class=" card-title">Sign up</h1>
+              </div>
+              <div class=" card-body">
+                
+              </div>
+              <div class=" card-footer">
+                <div class="auth-fluid">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="login-card card-body auth-body">
+                          <form class="md-float-material">
+                            <div class="auth-box">
+                              <div class="row m-b-20">
+                                <div class="col-md-12">
+                                  <h4 class="text-center txt-primary" style="color: #929292; font-weight: 600;">Welcome to <h1 style="color: #008EF8;font-weight: 600;">UniReview!</h1></h4>
+                                </div>
+                              </div>
+                              <div class="auth-sep"><span><span style="font-size: small; color: #929292;">Sign up with one click</span></span></div>
+                              <div class="row m-t-30">
+                                <div class="col-md-12 btn-gg">
+                                  <a
+                                    href="javascript:void(0);"
+                                    (click)="signUpGoogle()"
+                                    class="social_box google"
+                                  >
+                                    <span class="icon"
+                                      ><img
+                                        src="../../../assets/img/btn_google_light_normal_ios.svg"
+                                        alt=""
+                                    /></span>
+                                    <span class="icon_title">Connect with Google</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-4 col-md-6"></div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  <p-toast position="top-right" [baseZIndex]="100000"></p-toast>
+  
+  

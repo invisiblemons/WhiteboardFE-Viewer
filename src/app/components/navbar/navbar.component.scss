@@ -18,8 +18,12 @@ navbar {
     .pi-search {
       color: #0070fc;
     }
+    input::placeholder {
+      font-size: small;
+    }
     input:focus::placeholder {
       color: #79ccf0;
+      font-size: small;
     }
   }
   .form-inline {
