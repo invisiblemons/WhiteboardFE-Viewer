@@ -300,7 +300,20 @@ dl {
 }
 
 :host {
+  ::ng-deep .reviewCard1 > .card {
+    transition: none;
+    margin-top: 20px;
+  }
+}
+
+:host {
   ::ng-deep .reviewCard > .card:not(.card-plain):hover {
+    -webkit-transform: translateY(0px);
+  }
+}
+
+:host {
+  ::ng-deep .reviewCard1 > .card:not(.card-plain):hover {
     -webkit-transform: translateY(0px);
   }
 }

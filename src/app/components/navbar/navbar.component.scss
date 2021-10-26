@@ -1,74 +1,98 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap");
 navbar {
-  position:fixed;
+  position: fixed;
 }
 #school {
-    border: 2px solid #cccccc;
-    border-radius: 4px;
-    margin-top: 10px;
-    height: 45px
-;
-    .input-group-text {
-      background: transparent !important;
-      border: none;
-      font-weight: 500;
-      color: #464646;
-      font-size: large;
-    }
-    .pi-search {
-      color: #0070fc;
-    }
-    input::placeholder {
-      font-size: small;
-    }
-    input:focus::placeholder {
-      color: #79ccf0;
-      font-size: small;
-    }
-  }
-  .form-inline {
-    margin-left: 22%!important;
-    width: 35%;
-  }
-  img {
-    height: auto;
-    width: auto;
-    max-width: 175px;
-    max-height: 55px;
-  }
-  .form-control {
-    font-size: large;
-    margin-top: 1px;
-  }
-  .navbar-brand {
-    font-family: 'Dancing Script', cursive;
-  }
-
-  .p-button {
-    border: 3px solid #2196F3;
-  }
-  .p-button.p-button-outlined  {
-    border: 3px solid;
-  }
-
-  .p-button.p-button-outlined:enabled:hover{
-    border: 3px solid;
-  }
-
-  .p-button.p-button-outlined:enabled:active {
-    border: 3px solid;
-  }
-  .dropdown-menu.dropdown-info {
-    background-color: white;
-    border:none;
-    color: #2196F3;
+  border: 2px solid #cccccc;
+  border-radius: 4px;
+  margin-top: 10px;
+  height: 45px;
+  .input-group-text {
+    background: transparent !important;
+    border: none;
+    font-weight: 500;
+    color: #464646;
     font-size: large;
   }
-  .dropdown-menu.dropdown-info:before {
-    background-color: white;
+  .pi-search {
+    color: #0070fc;
   }
-  .dropdown-menu.dropdown-info .dropdown-item {
-    color: #4ba7f3;
-    font-size: large;
+  input::placeholder {
+    font-size: small;
   }
-  
+  input:focus::placeholder {
+    color: #79ccf0;
+    font-size: small;
+  }
+}
+.form-inline {
+  margin-left: 22% !important;
+  width: 32%;
+}
+img {
+  height: auto;
+  width: auto;
+  max-width: 175px;
+  max-height: 55px;
+}
+.form-control {
+  font-size: large;
+  margin-top: 1px;
+}
+.navbar-brand {
+  font-family: "Dancing Script", cursive;
+}
+
+.p-button {
+  border: 3px solid #2196f3;
+}
+.p-button.p-button-outlined {
+  border: 3px solid;
+}
+
+.p-button.p-button-outlined:enabled:hover {
+  border: 3px solid;
+}
+
+.p-button.p-button-outlined:enabled:active {
+  border: 3px solid;
+}
+.dropdown-menu.dropdown-info {
+  background-color: white;
+  border: none;
+  color: #2196f3;
+  font-size: large;
+}
+.dropdown-menu.dropdown-info:before {
+  background-color: white;
+}
+.dropdown-menu.dropdown-info .dropdown-item {
+  color: #4ba7f3;
+  font-size: large;
+}
+:host {
+  ::ng-deep .p-inputtext:enabled:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+:host {
+  ::ng-deep .p-inputtext:enabled:hover {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+:host {
+  ::ng-deep .p-inputtext {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+    border: none;
+  }
+}

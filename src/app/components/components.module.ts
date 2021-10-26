@@ -47,6 +47,7 @@ import {AvatarModule} from 'primeng/avatar';
 import {AvatarGroupModule} from 'primeng/avatargroup';
 import {TabViewModule} from 'primeng/tabview';
 import {StyleClassModule} from 'primeng/styleclass';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 @NgModule({
   imports: [
@@ -92,7 +93,8 @@ import {StyleClassModule} from 'primeng/styleclass';
     AvatarModule,
     AvatarGroupModule,
     TabViewModule,
-    StyleClassModule
+    StyleClassModule,
+    AutoCompleteModule
   ],
   declarations: [
     FooterComponent,
@@ -138,7 +140,8 @@ import {StyleClassModule} from 'primeng/styleclass';
     AvatarModule,
     AvatarGroupModule,
     TabViewModule,
-    StyleClassModule
+    StyleClassModule,
+    AutoCompleteModule
   ],
 })
 export class ComponentsModule {}

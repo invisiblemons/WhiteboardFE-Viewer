@@ -16,13 +16,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form
-              onsubmit="event.preventDefault()"
               class="form-inline my-2 my-lg-0 mx-auto"
               id="school"
             >
-              <div class="input-group mb-3">
+              <div class="input-group mb-3" *ngIf="universities">
                 <span class="input-group-text">Tìm</span>
-                <input type="text" placeholder="bài đánh giá của trường ..." class="form-control">
+                <p-autoComplete (onSelect)="onSelect($event)" [suggestions]="searchResult" (completeMethod)="search($event)" placeholder="bài đánh giá của trường ..." ></p-autoComplete>
+                
                 <div class="input-group-append">
                   <span class="input-group-text"><i class="pi pi-search"></i></span>
                 </div>

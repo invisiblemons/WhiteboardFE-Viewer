@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from "@angular/core";
 import { Router } from "@angular/router";
 import PerfectScrollbar from "perfect-scrollbar";
 import { ToastrService } from "ngx-toastr";
+import { University } from "src/app/pages/dashboard/dashboard.model";
 
 var misc: any = {
   sidebar_mini_active: true
@@ -13,6 +14,7 @@ var misc: any = {
   styleUrls: ["./admin-layout.component.scss"]
 })
 export class AdminLayoutComponent implements OnInit {
+
   constructor(public router: Router, public toastr: ToastrService) {}
   @HostListener("window:scroll", ["$event"])
   showNavbarButton = () => {
@@ -35,7 +37,6 @@ export class AdminLayoutComponent implements OnInit {
       navbarMinimize.style.opacity = 0;
     }
   };
-
   ngOnInit() {
     var mainPanel: any = document.getElementsByClassName("main-panel")[0];
 

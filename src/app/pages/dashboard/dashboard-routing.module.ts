@@ -9,6 +9,13 @@ const routes: Routes = [
     data: {
       breadcrumb: 'dashboard'
     }
+  },
+  {
+    path: '/:name',
+    component: DashboardComponent,
+    data: {
+      breadcrumb: 'search/:name'
+    }
   }
 ];
 

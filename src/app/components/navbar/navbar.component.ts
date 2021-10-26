@@ -4,6 +4,9 @@ import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { LocalStorageService } from "../../pages/login/local-storage.service";
 import { user } from "../../pages/login/user.model";
+import { NavbarService } from "./navbar.service";
+import { University } from "src/app/pages/dashboard/dashboard.model";
+import { AutoComplete } from 'primeng/autocomplete';
 
 var misc: any = {
   sidebar_mini_active: true
@@ -19,6 +22,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
   private toggleButton: any;
   public isCollapsed = true;
 
+  universities: University[];
+
+  universitiesName: string[] = [];
+
+  searchResult: string[] = [];
+
+  university: University;
+
   userToken: string;
 
   //information admin
@@ -30,7 +41,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private element: ElementRef,
     private router: Router,
     public toastr: ToastrService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private navbarService: NavbarService
   ) {
     this.location = location;
   }
@@ -56,7 +68,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
     window.addEventListener("resize", this.updateColor);
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName("navbar-toggler")[0];
+
+    //get uni
+    this.navbarService.getUni().subscribe((data) => {
+      this.universities = data['universitys'];
+      this.universities.forEach(uni => {
+        this.universitiesName.push(uni.name);
+      });
+    })
   }
+
+  
   ngOnDestroy() {
     window.removeEventListener("resize", this.updateColor);
   }
@@ -64,4 +86,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.localStorageService.removeUser();
     this.router.navigate(['/auth']);
   }
+
+  onSelect(event) {
+      this.router.navigate(['/dashboard'], { queryParams: { name: event} });
+  }
+
+  search(event) {
+    this.searchResult = [];
+    this.universitiesName.forEach(name => {
+      if(name.includes(event.query)) {
+        this.searchResult.push(name);
+      }
+    });
+}
 }
