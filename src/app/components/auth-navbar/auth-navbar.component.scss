@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap');
+navbar {
+  position:fixed;
+}
+#school {
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+    margin-top: 10px;
+    height: 42px
+;
+    .input-group-text {
+      background: transparent !important;
+      border: none;
+      font-weight: 600;
+      color: #464646;
+      font-size: large;
+      margin-top: -2px;
+    }
+    .pi-search {
+      color: #0070fc;
+    }
+    input:focus::placeholder {
+      color: #79ccf0;
+    }
+  }
+  .form-inline {
+    margin-left: 20%!important;
+    width: 40%;
+  }
+  img {
+    height: auto;
+    width: auto;
+    max-width: 175px;
+    max-height: 55px;
+  }
+  .p-input-icon-right {
+    position: relative;
+    display: inline-block;
+    width: 290px;
+    .form-control {
+      font-size: large;
+    }
+  }
+  .navbar-brand {
+    font-family: 'Dancing Script', cursive;
+  }
+  .p-button {
+    border: 3px solid #2196F3;
+  }
+  .p-button.p-button-outlined  {
+    border: 3px solid;
+  }
+
+  .p-button.p-button-outlined:enabled:hover{
+    border: 3px solid;
+  }
+
+  .p-button.p-button-outlined:enabled:active {
+    border: 3px solid;
+  }

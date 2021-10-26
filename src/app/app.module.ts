@@ -1,39 +1,48 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+import { CommonModule, DatePipe } from "@angular/common";
+import { ToastrModule } from "ngx-toastr";
 
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AppComponent } from "./app.component";
+import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
+import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
+
+import { AppRoutingModule } from "./app-routing.module";
+import { ComponentsModule } from "./components/components.module";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { AuthService } from "./pages/login/auth.service";
+import { AngularFireModule } from "@angular/fire";
+import { environment } from "src/environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AngularFireModule } from '@angular/fire';
+import { JwtIntercepter } from "./pages/login/jwt.interceptor";
+import { ConfirmationService, MessageService } from "primeng/api";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { ShellComponent } from './shared/shell/shell.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from './auth.service';
-import { environment } from 'src/environments/environment';
-import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    ShellComponent,
-    NavbarComponent
-  ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   imports: [
-    BrowserModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
+    RouterModule,
     AppRoutingModule,
-    NgbModule,
+    ToastrModule.forRoot(),
+    ComponentsModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    HttpClientModule
+    AngularFireStorageModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtIntercepter, multi: true },
+    MessageService, ConfirmationService, DatePipe
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

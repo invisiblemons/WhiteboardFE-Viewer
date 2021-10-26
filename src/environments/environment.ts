@@ -13,7 +13,7 @@ export const environment = {
     appId: "1:546664115615:web:931ee95b7bd3e7823da1aa",
     measurementId: "G-MD39G9K463"
   },
-  apiUrl: "http://13.228.168.85"
+  apiUrl: "https://ec2-13-228-168-85.ap-southeast-1.compute.amazonaws.com"
 };
 
 /*

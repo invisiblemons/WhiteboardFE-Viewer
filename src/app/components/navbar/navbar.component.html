@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-md bg-primary">
+  <div class="container mt-1 mb-1">
+    <a class="navbar-brand" href="javascript:void(0)" [routerLink]="['/']">UniReview</a>
+    <button
+      class="navbar-toggler navbar-toggler-right"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-bar"></span>
+      <span class="navbar-toggler-bar"></span>
+      <span class="navbar-toggler-bar"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form
+              onsubmit="event.preventDefault()"
+              class="form-inline my-2 my-lg-0 mx-auto"
+              id="school"
+            >
+              <div class="input-group mb-3">
+                <span class="input-group-text">Tìm</span>
+                <input type="text" placeholder="một trường đại học..." class="form-control">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="pi pi-search"></i></span>
+                </div>
+              </div>
+            </form>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <ng-container *ngIf="userToken; else signin">
+            <div ngbDropdown class="no-caret image-dropdown">
+              <div class="nav-link" ngbDropdownToggle>
+                <div class="profile-photo-small photo">
+                  <img
+                    src="{{avatarUrl}}"
+                    alt="Circle Image"
+                    class="img-circle img-responsive img-no-padding"
+                  />
+                </div>
+                <span style="font-size: 16px;margin-top: 2px; margin-left: 10px;">{{name}} <i class="pi pi-angle-down"></i></span>
+              </div>
+              <div ngbDropdownMenu class="dropdown-menu-right dropdown-info">
+                <a class="dropdown-item" (click)="signOut()" style="cursor:pointer;">Sign out</a>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #signin>
+            <button pButton pRipple type="button" label="Sign Up"  class="mr-2 p-button-sm"></button>
+            <button pButton pRipple type="button" label="Sign In" [routerLink]="['/auth']" class="p-button-outlined p-button-sm"></button>
+          </ng-template>
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
