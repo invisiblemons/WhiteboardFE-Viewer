@@ -420,7 +420,7 @@
                       </p-tabView>
                     </div>
 
-                    <div class="media-footer">
+                    <div class="media-footer p-3">
                       <hr style="font-weight: 600; margin-right: 15px" />
                       <button
                         pButton
@@ -428,7 +428,7 @@
                         type="button"
                         class="thumb-up p-button-outlined p-button-secondary"
                       >
-                        <i class="pi pi-thumbs-up mr-2"></i>332
+                        <i class="pi pi-heart mr-2"></i>332
                       </button>
                       <button
                         pButton
@@ -436,7 +436,7 @@
                         type="button"
                         class="thumb-down p-button-outlined p-button-secondary"
                       >
-                        <i class="pi pi-thumbs-down mr-2"></i>2
+                        <i class="pi pi-comments mr-2"></i>1
                       </button>
                       <button
                         pButton
@@ -447,84 +447,84 @@
                           float-right
                           mr-5
                         "
-                        style="border: none"
+                        style="border: none; font-size: large;"
                         (click)="showCommentSection()"
-                      >
-                        <i class="pi pi-comments mr-2"></i> Bình luận
+                      > Bình luận
                       </button>
-                      <!-- comment -->
-                      <ng-container *ngIf="showComment">
-                        <div class="row">
-                          <div class="col mx-auto">
-                            <div class="media-area mr-5">
-                              <div class="media">
-                                <a class="pull-left" href="javascript:void(0)">
-                                  <div class="avatar profile-photo-small">
-                                    <img
-                                      class="media-object"
-                                      src="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
-                                      alt="..."
-                                    />
-                                  </div>
-                                </a>
-                                <div class="media-body">
-                                  <h5 class="media-heading">Thành Đạt</h5>
-                                  <div class="pull-right">
-                                    <h6 class="text-muted">
-                                      8 giờ 15 phút 26/10/2021
-                                    </h6>
-                                    <a
-                                      href="javascript:void(0)"
-                                      class="btn btn-info btn-link pull-right"
-                                      (click)="showReplyCommentSection()"
-                                    >
-                                      <i class="fa fa-reply"></i> Reply</a
-                                    >
-                                  </div>
-                                  <p>Bài đánh giá tuyệt vời</p>
-                                  <p>Cảm ơn chia sẻ của bạn</p>
+                      
+                    </div>
+                    <!-- comment -->
+                    <ng-container *ngIf="showComment">
+                      <div class="row">
+                        <div class="col-sm-12 mt-2">
+                          <div class="media-area mr-5 ">
+                            <div class="media">
+                              <a class="pull-left" href="javascript:void(0)">
+                                <div class="avatar profile-photo-small">
+                                  <img
+                                    class="media-object"
+                                    src="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
+                                    alt="..."
+                                  />
+                                </div>
+                              </a>
+                              <div class="media-body">
+                                <h5 class="media-heading">Thành Đạt</h5>
+                                <div class="pull-right">
+                                  <h6 class="text-muted">
+                                    8 giờ 15 phút 26/10/2021
+                                  </h6>
+                                  <a
+                                    href="javascript:void(0)"
+                                    class="btn btn-info pull-right"
+                                    (click)="showReplyCommentSection()"
+                                  >
+                                    <i class="fa fa-reply"></i> Reply</a
+                                  >
+                                </div>
+                                <p>Bài đánh giá tuyệt vời</p>
+                                <p>Cảm ơn chia sẻ của bạn</p>
 
-                                  <br />
-                                  <ng-container *ngIf="showReply">
-                                    <div class="media media-post">
-                                      <a
-                                        class="pull-left author"
-                                        href="javascript:void(0)"
-                                      >
-                                        <div class="avatar">
-                                          <img
-                                            class="media-object"
-                                            alt="64x64"
-                                            src="{{ avatarUrl }}"
-                                          />
-                                        </div>
-                                      </a>
-                                      <div class="media-body">
-                                        <textarea
-                                          class="form-control"
-                                          placeholder="Trả lời bình luận ..."
-                                          rows="4"
-                                        ></textarea>
-                                        <div class="media-footer">
-                                          <a
-                                            href="javascript:void(0)"
-                                            class="btn btn-info pull-right"
-                                            >Reply</a
-                                          >
-                                        </div>
+                                <br />
+                                <ng-container *ngIf="showReply">
+                                  <div class="media media-post">
+                                    <a
+                                      class="pull-left author"
+                                      href="javascript:void(0)"
+                                    >
+                                      <div class="avatar">
+                                        <img
+                                          class="media-object"
+                                          alt="64x64"
+                                          src="{{ avatarUrl }}"
+                                        />
+                                      </div>
+                                    </a>
+                                    <div class="media-body">
+                                      <textarea
+                                        class="form-control"
+                                        placeholder="Trả lời bình luận ..."
+                                        rows="4"
+                                      ></textarea>
+                                      <div class="media-footer">
+                                        <a
+                                          href="javascript:void(0)"
+                                          class="btn btn-info pull-right"
+                                          >Reply</a
+                                        >
                                       </div>
                                     </div>
-                                    <!-- end media-post -->
-                                  </ng-container>
-                                </div>
+                                  </div>
+                                  <!-- end media-post -->
+                                </ng-container>
                               </div>
-                              <!-- end media -->
                             </div>
+                            <!-- end media -->
                           </div>
                         </div>
-                      </ng-container>
-                      <!--  end Comment -->
-                    </div>
+                      </div>
+                    </ng-container>
+                    <!--  end Comment -->
                   </div>
                 </div>
                 <!-- end media -->
@@ -650,7 +650,7 @@
                       </p-tabView>
                     </div>
 
-                    <div class="media-footer">
+                    <div class="media-footer p-3">
                       <hr style="font-weight: 600; margin-right: 15px" />
                       <button
                         pButton
@@ -658,7 +658,7 @@
                         type="button"
                         class="thumb-up p-button-outlined p-button-secondary"
                       >
-                        <i class="pi pi-thumbs-up mr-2"></i>332
+                        <i class="pi pi-heart mr-2"></i>332
                       </button>
                       <button
                         pButton
@@ -666,7 +666,7 @@
                         type="button"
                         class="thumb-down p-button-outlined p-button-secondary"
                       >
-                        <i class="pi pi-thumbs-down mr-2"></i>2
+                        <i class="pi pi-comments mr-2"></i>1
                       </button>
                       <button
                         pButton
@@ -677,84 +677,77 @@
                           float-right
                           mr-5
                         "
-                        style="border: none"
+                        style="border: none; font-size: large;"
                         (click)="showCommentSection()"
                       >
-                        <i class="pi pi-comments mr-2"></i> Bình luận
+                         Bình luận
                       </button>
-                      <!-- comment -->
-                      <ng-container *ngIf="showComment">
-                        <div class="row">
-                          <div class="col mx-auto">
-                            <div class="media-area mr-5">
-                              <div class="media">
-                                <a class="pull-left" href="javascript:void(0)">
-                                  <div class="avatar profile-photo-small">
-                                    <img
-                                      class="media-object"
-                                      src="https://i.pinimg.com/236x/ad/15/4c/ad154cd33e4fc34d4a492966db9e9e37.jpg"
-                                      alt="..."
-                                    />
-                                  </div>
-                                </a>
-                                <div class="media-body">
-                                  <h5 class="media-heading">Quốc Bảo</h5>
-                                  <div class="pull-right">
-                                    <h6 class="text-muted">
-                                      8 giờ 15 phút 26/10/2021
-                                    </h6>
-                                    <a
-                                      href="javascript:void(0)"
-                                      class="btn btn-info btn-link pull-right"
-                                      (click)="showReplyCommentSection()"
-                                    >
-                                      <i class="fa fa-reply"></i> Reply</a
-                                    >
-                                  </div>
-                                  <p>Bài đánh giá quá đúng sự thật</p>
-                                  <p>Cảm ơn chia sẻ của bạn</p>
+                      
+                    </div>
+                    <!-- comment -->
+                    <ng-container *ngIf="showComment">
+                      <div class="row">
+                        <div class="col-sm-12 mt-2">
+                          <div class="media-area mr-5 ">
+                            <div class="media">
+                              <a class="pull-left" href="javascript:void(0)">
+                                <div class="avatar profile-photo-small">
+                                  <img
+                                    class="media-object"
+                                    src="https://i.pinimg.com/236x/ad/15/4c/ad154cd33e4fc34d4a492966db9e9e37.jpg"
+                                    alt="..."
+                                  />
+                                </div>
+                              </a>
+                              <div class="media-body">
+                                <h5 class="media-heading">Quốc Bảo</h5>
+                                <div class="pull-right">
+                                  <h6 class="text-muted">
+                                    8 giờ 15 phút 26/10/2021
+                                  </h6>
+                                  <button pButton pRipple type="button" icon="fa fa-reply" (click)="showReplyCommentSection()" class="p-button-rounded p-button-info p-button-text">Reply</button>
+                                  
+                                </div>
+                                <p>Bài đánh giá quá đúng sự thật</p>
+                                <p>Cảm ơn chia sẻ của bạn</p>
 
-                                  <br />
-                                  <ng-container *ngIf="showReply">
-                                    <div class="media media-post">
-                                      <a
-                                        class="pull-left author"
-                                        href="javascript:void(0)"
-                                      >
-                                        <div class="avatar">
-                                          <img
-                                            class="media-object"
-                                            alt="64x64"
-                                            src="{{ avatarUrl }}"
-                                          />
-                                        </div>
-                                      </a>
-                                      <div class="media-body">
-                                        <textarea
-                                          class="form-control"
-                                          placeholder="Trả lời bình luận ..."
-                                          rows="4"
-                                        ></textarea>
-                                        <div class="media-footer">
-                                          <a
-                                            href="javascript:void(0)"
-                                            class="btn btn-info pull-right"
-                                            >Reply</a
-                                          >
-                                        </div>
+                                <br />
+                                <ng-container *ngIf="showReply">
+                                  <div class="media media-post">
+                                    <a
+                                      class="pull-left author"
+                                      href="javascript:void(0)"
+                                    >
+                                      <div class="avatar">
+                                        <img
+                                          class="media-object"
+                                          alt="64x64"
+                                          src="{{ avatarUrl }}"
+                                        />
+                                      </div>
+                                    </a>
+                                    <div class="media-body">
+                                      <textarea
+                                        class="form-control"
+                                        placeholder="Trả lời bình luận ..."
+                                        rows="4"
+                                      ></textarea>
+                                      <div class="media-footer">
+                                        <button pButton pRipple type="button" icon="fa fa-reply" (click)="showReplyCommentSection()" class="p-button-rounded p-button-info p-button-text">Reply</button>
+                                  
                                       </div>
                                     </div>
-                                    <!-- end media-post -->
-                                  </ng-container>
-                                </div>
+                                  </div>
+                                  <!-- end media-post -->
+                                </ng-container>
                               </div>
-                              <!-- end media -->
                             </div>
+                            <!-- end media -->
                           </div>
                         </div>
-                      </ng-container>
-                      <!--  end Comment -->
-                    </div>
+                      </div>
+                    </ng-container>
+                    <!--  end Comment -->
                   </div>
                 </div>
                 <!-- end media -->

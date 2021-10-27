@@ -18,7 +18,7 @@
         </div>
         <h4 style="font-weight: 700;color: #4D5F7F; margin-top: 20px; margin-bottom: 46px;" class="ml-3">{{ user.name }}</h4>
       
-      <div class="p-field mt-3">
+      <!-- <div class="p-field mt-3">
         <label for="university">Chọn trường đại học</label>
         <p-dropdown
           id="university"
@@ -27,7 +27,7 @@
           placeholder="Chọn truờng đại học"
           optionLabel="name"
         ></p-dropdown>
-      </div>
+      </div> -->
 
       <div class="p-formgrid p-grid">
         <div class="p-field p-col-12 mt-3">
@@ -40,6 +40,17 @@
           ></p-calendar>
         </div>
       </div>
+      <div class="p-formgrid p-grid">
+      <div class="p-field p-col-12 mt-3">
+        <label for="address">Mô tả về bạn</label>
+          <input
+            type="text"
+            pInputText
+            required
+            autofocus
+          />
+      </div>
+    </div>
     </ng-template>
       
 
