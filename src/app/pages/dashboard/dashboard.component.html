@@ -28,7 +28,8 @@
                       >
                       <span class="user-name">{{ universities[1].name }}</span>
                       <span class="buttonFollow">
-                        <button
+                        <ng-container *ngIf="user">
+                          <button
                           pButton
                           pRipple
                           type="button"
@@ -41,6 +42,24 @@
                             border: 1px solid grey !important;
                           "
                         ></button>
+                        </ng-container>
+                        <ng-container *ngIf="!user">
+                          <button
+                          pButton
+                          pRipple
+                          type="button"
+                          label="Theo dõi"
+                          class="p-button-raised"
+                          [routerLink]="['/auth']"
+                          style="
+                            background-color: aliceblue;
+                            color: black;
+                            border-radius: 10px;
+                            border: 1px solid grey !important;
+                          "
+                        ></button>
+                        </ng-container>
+                        
                       </span>
                     </div>
                     <div class="profile-head">
@@ -107,7 +126,8 @@
                       >
                       <span class="user-name">{{ universities[0].name }}</span>
                       <span class="buttonFollow">
-                        <button
+                        <ng-container *ngIf="user">
+                          <button
                           pButton
                           pRipple
                           type="button"
@@ -120,6 +140,23 @@
                             border: 1px solid grey !important;
                           "
                         ></button>
+                        </ng-container>
+                        <ng-container *ngIf="!user">
+                          <button
+                          pButton
+                          pRipple
+                          type="button"
+                          label="Theo dõi"
+                          class="p-button-raised"
+                          [routerLink]="['/auth']"
+                          style="
+                            background-color: aliceblue;
+                            color: black;
+                            border-radius: 10px;
+                            border: 1px solid grey !important;
+                          "
+                        ></button>
+                        </ng-container>
                       </span>
                     </div>
                     <div class="profile-head">
@@ -179,57 +216,58 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="col-sm-12" *ngIf="showNotify">
-          <div class="card card-profile">
-            <div class="dropdown-header">
-              <h4 style="font-weight: 600">Thông báo</h4>
+          <div class="col-sm-12" *ngIf="showNotify">
+            <div class="card card-profile">
+              <div class="dropdown-header">
+                <h4 style="font-weight: 600">Thông báo</h4>
+              </div>
+              <ul class="friend-list">
+                <li class="d-block">
+                  <div>
+                    <div class="media">
+                      <p-avatar
+                        image="https://i.pinimg.com/236x/b0/7f/73/b07f7378808e893c16866ea09114c808.jpg"
+                        size="large"
+                        shape="circle"
+                      ></p-avatar>
+                      <div class="media-body">
+                        <div class="float-left">
+                          <h5 class="mt-0">
+                            <span>Nguyễn Bá Hùng</span> đã đăng bài đánh giá mới
+                            về trường đại học Bách Khoa
+                          </h5>
+                          <h6>8 giờ trước</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <a href="#">
+                    <div class="media">
+                      <p-avatar
+                        image="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
+                        size="large"
+                        shape="circle"
+                      ></p-avatar>
+                      <div class="media-body">
+                        <div class="float-left">
+                          <h5 class="mt-0">
+                            <span>Nguyễn Bá Hùng</span> đã đăng bài đánh giá mới
+                            về trường đại học Bách Khoa
+                          </h5>
+                          <h6>8 hour ago</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </div>
-            <ul class="friend-list">
-              <li class="d-block">
-                <div>
-                  <div class="media">
-                    <p-avatar
-                      image="https://i.pinimg.com/236x/b0/7f/73/b07f7378808e893c16866ea09114c808.jpg"
-                      size="large"
-                      shape="circle"
-                    ></p-avatar>
-                    <div class="media-body">
-                      <div class="float-left">
-                        <h5 class="mt-0">
-                          <span>Nguyễn Bá Hùng</span> đã đăng bài đánh giá mới
-                          về trường đại học Bách Khoa
-                        </h5>
-                        <h6>8 giờ trước</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <a href="#">
-                  <div class="media">
-                    <p-avatar
-                      image="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
-                      size="large"
-                      shape="circle"
-                    ></p-avatar>
-                    <div class="media-body">
-                      <div class="float-left">
-                        <h5 class="mt-0">
-                          <span>Nguyễn Bá Hùng</span> đã đăng bài đánh giá mới
-                          về trường đại học Bách Khoa
-                        </h5>
-                        <h6>8 hour ago</h6>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
+
+        
       </div>
       <div class="col-md-7 col-sm-12 review">
         <ng-container *ngIf="isShow; else loadData">
@@ -375,6 +413,21 @@
                                 </dd>
                               </dl>
                             </div>
+                            <ng-container *ngIf="review.length === 1">
+                              <div>
+                                <div class="review-item">
+                                  <div class="review-item-content">
+                                    <div class="p-mb-3">
+                                      <img
+                                        src="{{ review.pictures[0].picture }}"
+                                        class="review-image"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </ng-container>
+                            <ng-container *ngIf="review.length > 1">
                             <div class="col-sm-12 col-xl-12" style="margin-left: -35px; margin-top: 10px;">
                               <p-carousel
                                 [value]="review.pictures"
@@ -400,6 +453,7 @@
                                 </ng-template>
                               </p-carousel>
                             </div>
+                          </ng-container>
                       </div>
                     </div>
                   </div>

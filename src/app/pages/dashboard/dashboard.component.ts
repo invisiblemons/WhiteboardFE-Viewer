@@ -70,17 +70,26 @@ export class DashboardComponent implements OnInit {
     this.services.getPublishedReviews().subscribe((res) => {
       if (null !== res) {
         this.reviews = res["reviews"];
-        this.reviewsRoot = res["reviews"];
+        this.reviews.forEach( (review, index) => {
+          this.reviews[index].length = this.reviews[index].pictures.length;
+        });
+        this.reviewsRoot = this.reviews;
         this.isShow = false;
       }
     });
 
-    this.route.queryParams.subscribe((params) => {
-      this.reviews = this.reviewsRoot;
-      this.reviews = this.reviews.filter(res => {
-        !res.universityName.includes(params["name"]);
-      })
-    });
+    
+      this.route.queryParams.subscribe((params) => {
+        if(this.reviews)
+    {
+      console.log("test")
+        this.reviews = this.reviewsRoot;
+        this.reviews = this.reviews.filter(res => {
+          !res.universityName.includes(params["name"]);
+        })
+      }
+      });
+    
 
     this.services.getUniversities().subscribe((res) => {
       this.universities = res["universitys"];
