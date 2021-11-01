@@ -32,7 +32,7 @@ export class AuthService {
               .subscribe(
                 (res: user) => {
                   this.localStorageService.setUser(res);
-                  if (null !== res.birthday) {
+                  if (this.router.url === '/auth/sign-up') {
                     this.router.navigate(["/auth/sign-up/sign-up-detail"]);
                   } else this.router.navigate(["/dashboard"]);
                 },

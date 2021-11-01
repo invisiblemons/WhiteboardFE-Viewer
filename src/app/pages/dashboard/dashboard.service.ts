@@ -10,6 +10,7 @@ import { Campus, Review, University } from './dashboard.model';
 export class DashboardService {
 
   baseURL: string = environment.apiUrl + '/api/v1.0/reviews';
+  campusURL: string = environment.apiUrl + '/api/v1.0/campuses';
   uniURL: string = environment.apiUrl + '/api/v1.0/universities';
   constructor(private httpClient: HttpClient) { }
 
@@ -17,7 +18,11 @@ export class DashboardService {
     return this.httpClient.get<Review[]>(`${this.baseURL}?status=published`);
   }
 
-  getUniversities(): Observable<University[]> {
-    return this.httpClient.get<University[]>(`${this.uniURL}`);
+  getCampuses(): Observable<Campus[]> {
+    return this.httpClient.get<Campus[]>(`${this.campusURL}`);
+  }
+
+  getUniversityById(id): Observable<University> {
+    return this.httpClient.get<University>(`${this.uniURL}/${id}`);
   }
 }

@@ -1,33 +1,25 @@
 navbar {
   position: fixed;
 }
-#school {
+.ui-fluid {
   border: 2px solid #cccccc;
   border-radius: 4px;
-  margin-top: 10px;
-  height: 45px;
-  .input-group-text {
-    background: transparent !important;
-    border: none;
-    font-weight: 500;
-    color: #464646;
-    font-size: large;
-  }
-  .pi-search {
-    color: #0070fc;
-  }
-  input::placeholder {
-    font-size: small;
-  }
-  input:focus::placeholder {
-    color: #79ccf0;
-    font-size: small;
-  }
+  margin-left: 32px;
 }
 .form-inline {
-  margin-left: 22% !important;
-  width: 32%;
+  margin-left: 27% !important;
+  width: 27%;
 }
+
+:host {
+  ::ng-deep .p-autocomplete {
+    width: 350px;
+    .p-inputtext {
+      width: 250px;
+    }
+  }
+}
+
 img {
   height: auto;
   width: auto;

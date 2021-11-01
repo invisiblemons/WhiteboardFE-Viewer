@@ -1,40 +1,78 @@
 <div class="content">
   <div class="container">
     <div class="row">
-      <div class="col-md-5 col-sm-12">
-        <div class="row sticky-top">
-          <div class="col-sm-12">
-            <p-menu [model]="items"></p-menu>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card">
-              <ng-container *ngIf="isShow; else loadDataUni">
-                <div class="p-field p-col-12 p-md-6">
-                  <p-skeleton styleClass="p-mb-2"></p-skeleton>
-                  <p-skeleton width="5rem" styleClass="p-mb-2"></p-skeleton>
-                  <p-skeleton height="2rem" styleClass="p-mb-2"></p-skeleton>
+      <div class="col-sm-12">
+        <p-menu [model]="items"></p-menu>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <p-carousel
+          [value]="campuses"
+          [autoplayInterval]="5000"
+          [numVisible]="3"
+          [numScroll]="1"
+          [circular]="true"
+          [responsiveOptions]="responsiveOptions"
+          [showIndicators]="false"
+        >
+          <ng-template pTemplate="header">
+            <h4 style="font-size: 18px; font-weight: 600; color: #4c6092">
+              Có thể bạn quan tâm
+            </h4>
+          </ng-template>
+          <ng-template let-campus pTemplate="item">
+            <ng-container *ngIf="isShow; else loadDataUni">
+              <div class="card">
+                <div class="p-grid p-formgrid">
+                  <div class="p-field p-col-12 p-md-6 p-pr-md-6 p-pr-0">
+                    <div class="custom-skeleton p-p-4">
+                      <div class="p-d-flex p-mb-3">
+                        <p-skeleton
+                          shape="circle"
+                          size="4rem"
+                          styleClass="p-mr-2"
+                        ></p-skeleton>
+                        <div>
+                          <p-skeleton
+                            width="10rem"
+                            styleClass="p-mb-2"
+                            borderRadius="16px"
+                          ></p-skeleton>
+                          <p-skeleton
+                            width="5rem"
+                            styleClass="p-mb-2"
+                            borderRadius="16px"
+                          ></p-skeleton>
+                          <p-skeleton height=".5rem"></p-skeleton>
+                        </div>
+                      </div>
+                      <p-skeleton width="100%" height="150px"></p-skeleton>
+                    </div>
+                  </div>
                 </div>
-              </ng-container>
-              <ng-template #loadDataUni>
+              </div>
+            </ng-container>
+            <ng-template #loadDataUni>
+              <div class="card">
                 <div class="card-body styleBg">
                   <div class="profile-wrap animated fadeIn">
                     <div class="info-wrap">
                       <div class="avatar-wrap">
-                        <img src="{{ universities[1].image }}" alt="avatar" />
+                        <img src="{{ campus.image }}" alt="avatar" />
                       </div>
                       <span class="user-name"
                         ><i class="pi pi-briefcase mt-2 mr-2"></i>Đại học</span
                       >
-                      <span class="user-name">{{ universities[1].name }}</span>
+                      <span class="user-name">{{ campus.university.name }} - {{campus.name}}</span>
                       <span class="buttonFollow">
-                        <ng-container *ngIf="user">
-                          <button
+                        <button
                           pButton
                           pRipple
                           type="button"
-                          label="Theo dõi"
+                          label="Xem đánh giá"
                           class="p-button-raised"
+                          (click)="onSelectSchool(campus)"
                           style="
                             background-color: aliceblue;
                             color: black;
@@ -42,29 +80,11 @@
                             border: 1px solid grey !important;
                           "
                         ></button>
-                        </ng-container>
-                        <ng-container *ngIf="!user">
-                          <button
-                          pButton
-                          pRipple
-                          type="button"
-                          label="Theo dõi"
-                          class="p-button-raised"
-                          [routerLink]="['/auth']"
-                          style="
-                            background-color: aliceblue;
-                            color: black;
-                            border-radius: 10px;
-                            border: 1px solid grey !important;
-                          "
-                        ></button>
-                        </ng-container>
-                        
                       </span>
                     </div>
                     <div class="profile-head">
                       <img
-                        src="{{ universities[1].image }}"
+                        src="{{ campus.image }}"
                         alt="profile-head-bg"
                         class="profile-head-bg"
                       />
@@ -93,377 +113,306 @@
                               color: '#ffffff'
                             }"
                           ></p-avatar
-                          ><span style="font-size: x-small; color: gray"
-                            >người cũng đang theo dõi</span
+                          ><span style="font-size: x-small;margin-left: 5px; color: gray"
+                            >người cũng đã đánh giá cơ sở này</span
                           >
                         </p-avatarGroup>
                       </div>
                     </div>
                   </div>
                 </div>
-              </ng-template>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card">
-              <ng-container *ngIf="isShow; else loadDataUnis">
-                <div class="p-field p-col-12 p-md-6">
-                  <p-skeleton styleClass="p-mb-2"></p-skeleton>
-                  <p-skeleton width="5rem" styleClass="p-mb-2"></p-skeleton>
-                  <p-skeleton height="2rem" styleClass="p-mb-2"></p-skeleton>
-                </div>
-              </ng-container>
-              <ng-template #loadDataUnis>
-                <div class="card-body styleBg">
-                  <div class="profile-wrap animated fadeIn">
-                    <div class="info-wrap">
-                      <div class="avatar-wrap">
-                        <img src="{{ universities[0].image }}" alt="avatar" />
+              </div>
+            </ng-template>
+          </ng-template>
+        </p-carousel>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-12 offset-2 review">
+        <app-card
+          *ngFor="let review of reviews"
+          [headerContent]="''"
+          class="reviewCard"
+        >
+          <ng-container *ngIf="isShow; else loadData">
+            <div class="p-field p-col-12 p-md-12">
+              <div class="custom-skeleton p-p-4">
+                <ul class="p-m-0 p-p-0">
+                  <li class="p-mb-3">
+                    <div class="p-d-flex">
+                      <p-skeleton
+                        shape="circle"
+                        size="4rem"
+                        styleClass="p-mr-2"
+                      ></p-skeleton>
+                      <div style="flex: 1">
+                        <p-skeleton
+                          width="100%"
+                          styleClass="p-mb-2"
+                        ></p-skeleton>
+                        <p-skeleton width="75%"></p-skeleton>
                       </div>
-                      <span class="user-name"
-                        ><i class="pi pi-briefcase mt-2 mr-2"></i>Đại học</span
-                      >
-                      <span class="user-name">{{ universities[0].name }}</span>
-                      <span class="buttonFollow">
-                        <ng-container *ngIf="user">
-                          <button
-                          pButton
-                          pRipple
-                          type="button"
-                          label="Theo dõi"
-                          class="p-button-raised"
-                          style="
-                            background-color: aliceblue;
-                            color: black;
-                            border-radius: 10px;
-                            border: 1px solid grey !important;
-                          "
-                        ></button>
-                        </ng-container>
-                        <ng-container *ngIf="!user">
-                          <button
-                          pButton
-                          pRipple
-                          type="button"
-                          label="Theo dõi"
-                          class="p-button-raised"
-                          [routerLink]="['/auth']"
-                          style="
-                            background-color: aliceblue;
-                            color: black;
-                            border-radius: 10px;
-                            border: 1px solid grey !important;
-                          "
-                        ></button>
-                        </ng-container>
-                      </span>
                     </div>
-                    <div class="profile-head">
+                  </li>
+                  <li class="p-mb-3">
+                    <div class="p-d-flex">
+                      <p-skeleton
+                        shape="circle"
+                        size="4rem"
+                        styleClass="p-mr-2"
+                      ></p-skeleton>
+                      <div style="flex: 1">
+                        <p-skeleton
+                          width="100%"
+                          styleClass="p-mb-2"
+                        ></p-skeleton>
+                        <p-skeleton width="75%"></p-skeleton>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="p-mb-3">
+                    <div class="p-d-flex">
+                      <p-skeleton
+                        shape="circle"
+                        size="4rem"
+                        styleClass="p-mr-2"
+                      ></p-skeleton>
+                      <div style="flex: 1">
+                        <p-skeleton
+                          width="100%"
+                          styleClass="p-mb-2"
+                        ></p-skeleton>
+                        <p-skeleton width="75%"></p-skeleton>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="p-d-flex">
+                      <p-skeleton
+                        shape="circle"
+                        size="4rem"
+                        styleClass="p-mr-2"
+                      ></p-skeleton>
+                      <div style="flex: 1">
+                        <p-skeleton
+                          width="100%"
+                          styleClass="p-mb-2"
+                        ></p-skeleton>
+                        <p-skeleton width="75%"></p-skeleton>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #loadData>
+            <div class="row reviewBody">
+              <div class="media-area">
+                <div class="media">
+                  <a class="pull-left" href="javascript:void(0)">
+                    <div class="avatar">
                       <img
-                        src="{{ universities[0].image }}"
-                        alt="profile-head-bg"
-                        class="profile-head-bg"
+                        class="media-object"
+                        src="{{ review.reviewerAvatar }}"
+                        alt="..."
                       />
                     </div>
-                  </div>
-                  <div class="card-footer text-center">
-                    <div class="extendUser">
-                      <div class="card">
-                        <p-avatarGroup styleClass="p-ml-4">
-                          <p-avatar
-                            image="https://i.pinimg.com/236x/b0/7f/73/b07f7378808e893c16866ea09114c808.jpg"
-                            size="large"
-                            shape="circle"
-                          ></p-avatar>
-                          <p-avatar
-                            image="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
-                            size="large"
-                            shape="circle"
-                          ></p-avatar>
-                          <p-avatar
-                            label="+2"
-                            shape="circle"
-                            size="large"
-                            [style]="{
-                              'background-color': '#0099F3',
-                              color: '#ffffff'
-                            }"
-                          ></p-avatar
-                          ><span style="font-size: x-small; color: gray"
-                            >người cũng đang theo dõi</span
-                          >
-                        </p-avatarGroup>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-template>
-            </div>
-          </div>
-          <div class="col-sm-12" *ngIf="showUser">
-            <div class="card card-profile">
-              <div class="card-avatar border-white">
-                <a href="#avatar">
-                  <img src="{{ avatarUrl }}" alt="{{ userName }}" />
-                </a>
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">{{ userName }}</h4>
-                <h5 class="card-category">Trường THPT Lê Khiết</h5>
-                <h6 class="card-category">Ngày sinh: 20/03/2000</h6>
-                <p class="card-description">Yêu những review chân thực</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12" *ngIf="showNotify">
-            <div class="card card-profile">
-              <div class="dropdown-header">
-                <h4 style="font-weight: 600">Thông báo</h4>
-              </div>
-              <ul class="friend-list">
-                <li class="d-block">
-                  <div>
-                    <div class="media">
-                      <p-avatar
-                        image="https://i.pinimg.com/236x/b0/7f/73/b07f7378808e893c16866ea09114c808.jpg"
-                        size="large"
-                        shape="circle"
-                      ></p-avatar>
-                      <div class="media-body">
-                        <div class="float-left">
-                          <h5 class="mt-0">
-                            <span>Nguyễn Bá Hùng</span> đã đăng bài đánh giá mới
-                            về trường đại học Bách Khoa
-                          </h5>
-                          <h6>8 giờ trước</h6>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <a href="#">
-                    <div class="media">
-                      <p-avatar
-                        image="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
-                        size="large"
-                        shape="circle"
-                      ></p-avatar>
-                      <div class="media-body">
-                        <div class="float-left">
-                          <h5 class="mt-0">
-                            <span>Nguyễn Bá Hùng</span> đã đăng bài đánh giá mới
-                            về trường đại học Bách Khoa
-                          </h5>
-                          <h6>8 hour ago</h6>
-                        </div>
-                      </div>
-                    </div>
                   </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        
-      </div>
-      <div class="col-md-7 col-sm-12 review">
-        <ng-container *ngIf="isShow; else loadData">
-          <div class="card">
-            <div class="p-grid p-formgrid">
-              <div class="p-field p-col-12 p-md-6">
-                <div class="custom-skeleton p-p-4">
-                  <ul class="p-m-0 p-p-0">
-                    <li class="p-mb-3">
-                      <div class="p-d-flex">
-                        <p-skeleton
-                          shape="circle"
-                          size="4rem"
-                          styleClass="p-mr-2"
-                        ></p-skeleton>
-                        <div style="flex: 1">
-                          <p-skeleton
-                            width="100%"
-                            styleClass="p-mb-2"
-                          ></p-skeleton>
-                          <p-skeleton width="75%"></p-skeleton>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="p-mb-3">
-                      <div class="p-d-flex">
-                        <p-skeleton
-                          shape="circle"
-                          size="4rem"
-                          styleClass="p-mr-2"
-                        ></p-skeleton>
-                        <div style="flex: 1">
-                          <p-skeleton
-                            width="100%"
-                            styleClass="p-mb-2"
-                          ></p-skeleton>
-                          <p-skeleton width="75%"></p-skeleton>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="p-mb-3">
-                      <div class="p-d-flex">
-                        <p-skeleton
-                          shape="circle"
-                          size="4rem"
-                          styleClass="p-mr-2"
-                        ></p-skeleton>
-                        <div style="flex: 1">
-                          <p-skeleton
-                            width="100%"
-                            styleClass="p-mb-2"
-                          ></p-skeleton>
-                          <p-skeleton width="75%"></p-skeleton>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="p-d-flex">
-                        <p-skeleton
-                          shape="circle"
-                          size="4rem"
-                          styleClass="p-mr-2"
-                        ></p-skeleton>
-                        <div style="flex: 1">
-                          <p-skeleton
-                            width="100%"
-                            styleClass="p-mb-2"
-                          ></p-skeleton>
-                          <p-skeleton width="75%"></p-skeleton>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-container>
-        <ng-template #loadData>
-          <ng-container *ngFor="let review of reviews">
-            <app-card
-              [headerContent]="'Duyệt bài review của Reviewer'"
-              class="reviewCard"
-            >
-              <div class="row reviewBody">
-                <div class="media-area">
-                  <div class="media">
-                    <a class="pull-left" href="javascript:void(0)">
-                      <div class="avatar">
-                        <img
-                          class="media-object"
-                          src="{{ review.reviewerAvatar }}"
-                          alt="..."
-                        />
-                      </div>
-                    </a>
-                    <div class="media-body">
-                      <h5 class="media-heading">{{ review.reviewerName }}</h5>
-                      <div class="pull-right">
-                        <h6 class="text-muted">
-                          {{ review.onDateTime | date: "dd/MM/yyyy" }}
-                        </h6>
-                      </div>
-                      <br />
-                      <h5>
-                        Đại học {{ review.universityName }} -
-                        {{ review.campusName }}
-                      </h5>
-                      <!-- body review -->
-                      <div class="row">
-                            <div class="col-sm-12 col-xl-12" style="margin-left: -35px; margin-top: 10px;">
-                              <dl class="dl-horizontal row">
-                                <dt class="col-sm-3">Tiêu đề</dt>
-                                <dd class="col-sm-9">
-                                  {{ review.title }}
-                                </dd>
-                                <dt class="col-sm-4">Đánh giá tiêu chí</dt>
-                                <ng-container
-                                  *ngFor="let detail of review.criterions"
-                                >
-                                  <dd class="col-sm-12 col-sm-offset-3">
-                                    <div class="row">
-                                      <div class="col-sm-4 offset-3">
-                                        {{ detail.criteriaName }}
-                                      </div>
-                                      <div class="col-sm-5">
-                                        <div>
-                                          <p-rating
-                                            [ngModel]="detail.rating"
-                                            readonly="true"
-                                            stars="5"
-                                            [cancel]="false"
-                                          ></p-rating>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </dd>
-                                </ng-container>
-
-                                <dt class="col-sm-3 text-truncate">Nội dung</dt>
-                                <dd class="col-sm-9">
-                                  {{ review.content }}
-                                </dd>
-                              </dl>
-                            </div>
-                            <ng-container *ngIf="review.length === 1">
-                              <div>
-                                <div class="review-item">
-                                  <div class="review-item-content">
-                                    <div class="p-mb-3">
-                                      <img
-                                        src="{{ review.pictures[0].picture }}"
-                                        class="review-image"
-                                      />
-                                    </div>
+                  <div class="media-body">
+                    <h5 class="media-heading">{{ review.reviewerName }}</h5>
+                    <div class="pull-right">
+                      <h6 class="text-muted">
+                        {{ review.onDateTime | date: "dd/MM/yyyy" }}
+                      </h6>
+                    </div>
+                    <br />
+                    <h5>
+                      Đại học {{ review.universityName }} -
+                      {{ review.campusName }}
+                    </h5>
+                    <!-- body review -->
+                    <div class="row">
+                      <div
+                        class="col-sm-12 col-xl-12"
+                        style="margin-left: -35px; margin-top: 10px"
+                      >
+                        <dl class="dl-horizontal row">
+                          <dt class="col-sm-3">Tiêu đề</dt>
+                          <dd class="col-sm-9">
+                            {{ review.title }}
+                          </dd>
+                          <dt class="col-sm-4">Đánh giá tiêu chí</dt>
+                          <ng-container
+                            *ngFor="let detail of review.criterions"
+                          >
+                            <dd class="col-sm-12 col-sm-offset-3">
+                              <div class="row">
+                                <div class="col-sm-4 offset-3">
+                                  {{ detail.criteriaName }}
+                                </div>
+                                <div class="col-sm-5">
+                                  <div>
+                                    <p-rating
+                                      [ngModel]="detail.rating"
+                                      readonly="true"
+                                      stars="5"
+                                      [cancel]="false"
+                                    ></p-rating>
                                   </div>
                                 </div>
                               </div>
-                            </ng-container>
-                            <ng-container *ngIf="review.length > 1">
-                            <div class="col-sm-12 col-xl-12" style="margin-left: -35px; margin-top: 10px;">
-                              <p-carousel
-                                [value]="review.pictures"
-                                [numVisible]="1"
-                                [numScroll]="1"
-                                [autoplayInterval]="3000"
-                                [circular]="false"
-                              >
-                                <ng-template
-                                  let-pictureForReview
-                                  pTemplate="item"
-                                >
-                                  <div class="review-item">
-                                    <div class="review-item-content">
-                                      <div class="p-mb-3">
-                                        <img
-                                          src="{{ pictureForReview.picture }}"
-                                          class="review-image"
-                                        />
-                                      </div>
-                                    </div>
-                                  </div>
-                                </ng-template>
-                              </p-carousel>
-                            </div>
+                            </dd>
                           </ng-container>
+
+                          <dt class="col-sm-3 text-truncate">Nội dung</dt>
+                          <dd class="col-sm-9">
+                            {{ review.content }}
+                          </dd>
+                        </dl>
                       </div>
+                      <ng-container *ngIf="review.length === 1">
+                        <div
+                          class="col-sm-12 col-xl-12"
+                          style="margin-left: -35px; margin-top: 10px"
+                        >
+                          <div class="review-item">
+                            <div class="review-item-content">
+                              <div class="p-mb-3">
+                                <img
+                                  src="{{ review.pictures[0].picture }}"
+                                  class="review-image"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngIf="review.length > 1">
+                        <div
+                          class="col-sm-12 col-xl-12"
+                          style="margin-left: -35px; margin-top: 10px"
+                        >
+                          <p-carousel
+                            [value]="review.pictures"
+                            [numVisible]="1"
+                            [numScroll]="1"
+                            [autoplayInterval]="3000"
+                            [circular]="false"
+                          >
+                            <ng-template let-pictureForReview pTemplate="item">
+                              <div class="review-item">
+                                <div class="review-item-content">
+                                  <div class="p-mb-3">
+                                    <img
+                                      src="{{ pictureForReview.picture }}"
+                                      class="review-image"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </ng-template>
+                          </p-carousel>
+                        </div>
+                      </ng-container>
                     </div>
                   </div>
-                  <!-- end media -->
                 </div>
+                <!-- end media -->
               </div>
-            </app-card>
-          </ng-container>
-        </ng-template>
+            </div>
+          </ng-template>
+        </app-card>
       </div>
     </div>
   </div>
+  <p-dialog
+    header="Thông tin cá nhân"
+    [(visible)]="userModal"
+    [dismissableMask]="true"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <div class="col-sm-12">
+      <div class="card card-profile">
+        <div class="card-avatar border-white">
+          <a href="#avatar">
+            <img src="{{ avatarUrl }}" alt="{{ userName }}" />
+          </a>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title">{{ userName }}</h4>
+          <h5 class="card-category">Trường THPT Lê Khiết</h5>
+          <h6 class="card-category">Ngày sinh: 20/03/2000</h6>
+          <p class="card-description">Yêu những review chân thực</p>
+        </div>
+      </div>
+    </div>
+  </p-dialog>
+  <p-dialog
+    header="Thông báo"
+    [(visible)]="notifyModal"
+    [dismissableMask]="true"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+    styleClass="modalStyel"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <div class="col-sm-12" style="margin-top: -50px">
+      <div class="card card-profile">
+        <div class="dropdown-header">
+          <h4 style="font-weight: 600">Thông báo</h4>
+        </div>
+        <ul class="friend-list">
+          <li class="d-block">
+            <div>
+              <div class="media">
+                <p-avatar
+                  image="https://i.pinimg.com/236x/b0/7f/73/b07f7378808e893c16866ea09114c808.jpg"
+                  size="large"
+                  shape="circle"
+                ></p-avatar>
+                <div class="media-body">
+                  <div class="float-left">
+                    <h5 class="mt-1">
+                      <span>Nguyễn Bá Hùng</span> đã đăng bài đánh giá mới về
+                      trường đại học Bách Khoa - Hồ Chí Minh
+                    </h5>
+                  </div>
+                  <div class="float-right">
+                    <h6 style="margin: 5px 10px 0 0">8 giờ trước</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              <div class="media">
+                <p-avatar
+                  image="https://i.pinimg.com/236x/7e/96/42/7e964217712707acba8b0bc270444997.jpg"
+                  size="large"
+                  shape="circle"
+                ></p-avatar>
+                <div class="media-body">
+                  <div class="float-left">
+                    <h5 class="mt-1">
+                      <span>Nguyễn Bá Phi Long</span> đã đăng bài đánh giá mới
+                      về trường đại học FPT - Hồ Chí Minh
+                    </h5>
+                  </div>
+                  <div class="float-right">
+                    <h6 style="margin: 5px 10px 0 0">8 giờ trước</h6>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </p-dialog>
 </div>

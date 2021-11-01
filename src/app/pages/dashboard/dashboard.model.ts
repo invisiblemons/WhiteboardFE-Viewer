@@ -60,6 +60,8 @@ export class Campus {
     email: string;
     image: string;
     majors: Major[];
+    universityId: string;
+    university: University;
   
     constructor(data) {
       if (null !== data) {

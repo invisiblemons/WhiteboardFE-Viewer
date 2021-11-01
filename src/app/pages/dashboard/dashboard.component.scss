@@ -50,6 +50,13 @@
     padding: 0;
     justify-content: center;
     display: flex;
+    font-size: 18px;
+    li {
+      color: #4D5F7F;
+       a {
+         font-weight: 500;
+       }
+    }
   }
 }
 :host ::ng-deep .p-menu .p-menuitem-link:not(.p-disabled):hover {
@@ -57,7 +64,7 @@
 }
 
 .review {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .reviewBody {
@@ -131,7 +138,7 @@
   .user-post,
   .buttonFollow {
     display: block;
-    color: #69757d;
+    color: #373c40;
     margin-left: -20px;
     margin-right: -20px;
   }
@@ -140,7 +147,7 @@
   }
   .user-name {
     font-size: 1em;
-    font-weight: normal;
+    font-weight: 600;
   }
   .map-location {
     color: #fff;
@@ -235,15 +242,15 @@ li {
   margin-top: 20px;
 }
 dt {
-  font-size: medium;
+  font-size: 16px;
   margin-top: 6px;
 }
 dd {
-  font-size: small;
+  font-size: 15px;
   margin-top: 6px;
 }
 dl {
-  font-size: small;
+  font-size: 15px;
 }
 
 .card-footer {
@@ -257,7 +264,6 @@ dl {
 :host {
   ::ng-deep .p-tabview.p-component {
     margin-left: -80px;
-    margin-top: 20px;
   }
 }
 :host {
@@ -296,13 +302,7 @@ dl {
 :host {
   ::ng-deep .reviewCard > .card {
     transition: none;
-  }
-}
-
-:host {
-  ::ng-deep .reviewCard1 > .card {
-    transition: none;
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 
@@ -312,16 +312,9 @@ dl {
   }
 }
 
-:host {
-  ::ng-deep .reviewCard1 > .card:not(.card-plain):hover {
-    -webkit-transform: translateY(0px);
-  }
-}
-
 //review
 .media {
   border-bottom: 1px solid rgba(164, 158, 147, 0.22);
-  padding-bottom: 30px;
   margin-top: 30px;
 
   .avatar {
@@ -353,8 +346,7 @@ dl {
     margin-left: -25px;
   }
   .media-footer {
-    margin-left: -25px;
-    margin-top: 20px;
+    margin-left: -65px;
     .btn-link {
       padding: 7px;
     }
@@ -378,19 +370,6 @@ dl {
     width: 85%;
     float: left;
     display: inline-block;
-  }
-  textarea {
-    margin: 0 0 10px 0;
-    font-size: 15px;
-    padding: 3px;
-  }
-  textarea:active {
-    outline: none;
-    border: 1px solid grey;
-  }
-  textarea:focus {
-    outline: none;
-    border: 1px solid grey;
   }
   .form {
     width: 100%;
@@ -419,7 +398,37 @@ dl {
     box-shadow: none;
   }
 }
+:host {
+  ::ng-deep .p-button.p-button-secondary:enabled:focus,
+  .p-buttonset.p-button-secondary > .p-button:enabled:focus,
+  .p-splitbutton.p-button-secondary > .p-button:enabled:focus {
+    box-shadow: none;
+    color: #00b9f7;
+  }
+}
+:host {
+  ::ng-deep .p-button.p-button-secondary.p-button-text:enabled:active,
+  .p-buttonset.p-button-secondary > .p-button.p-button-text:enabled:active,
+  .p-splitbutton.p-button-secondary > .p-button.p-button-text:enabled:active {
+    box-shadow: none;
+    color: #00b9f7;
+  }
+}
 
+:host {
+  ::ng-deep .p-button.p-button-text:enabled:active {
+    box-shadow: none;
+    color: #00b9f7;
+    background-color: transparent;
+  }
+}
+:host {
+  ::ng-deep .p-button:focus {
+    box-shadow: none;
+    color: #00b9f7;
+    background-color: transparent;
+  }
+}
 :host {
   ::ng-deep .active {
     box-shadow: none;
@@ -431,8 +440,9 @@ dl {
     }
   }
 }
-:host {
-  ::ng-deep .p-menuitem-link:not(.p-disabled):hover {
+:host ::ng-deep
+{ 
+  .p-menuitem-link:not(.p-disabled):hover {
     background-color: #ffffff;
     .p-menuitem-icon {
       background-color: white;
@@ -441,15 +451,14 @@ dl {
     .p-menuitem-text {
       background-color: white;
       color: #25aaf7;
+      font-size: 18px;
+      font-weight: 600;
+      
     }
   }
 }
 .comment {
   margin-right: 15px;
-}
-
-:host ::ng-deep .p-rating .p-rating-icon.pi-star {
-  color: #FFC925;
 }
 
 .dropdown-header {
@@ -458,9 +467,36 @@ dl {
   margin-bottom: 0;
   font-size: 0.875rem;
   color: #6c757d;
-  white-space: nowrap; }
-  .fixed{
-    position: sticky;
-    top:0;
-    z-index: 999;
+  white-space: nowrap;
+}
+.fixed {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+:host ::ng-deep .p-dialog .p-dialog-content {
+  background: linear-gradient(left, rgba(242,249,254,1) 0%,rgba(214,240,253,1) 100%);
+}
+:host ::ng-deep .p-carousel-item {
+  flex: 1 0 33.333333333333336%;
+  padding: 20px;
+}
+:host ::ng-deep {
+  .p-rating .p-rating-icon.pi-star {
+    color: #ffc925;
+  }
+  button.p-carousel-prev.p-link.p-disabled.p-ripple.ng-star-inserted {
+    color: transparent;
+  }
+  button.p-carousel-prev.p-link.p-ripple.ng-star-inserted {
+    color: transparent;
+  }
+  .p-carousel-content {
+    overflow: auto;
+    margin-left: -65px;
+    margin-right: -65px;
+  }
+}
+.modalStyel {
+  border-radius: 10px;
 }
