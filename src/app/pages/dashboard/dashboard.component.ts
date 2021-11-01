@@ -103,8 +103,6 @@ export class DashboardComponent implements OnInit {
       }
     });
 
-    
-
     //get publish reviews
     this.services.getPublishedReviews().subscribe((res) => {
       if (null !== res) {
@@ -113,51 +111,57 @@ export class DashboardComponent implements OnInit {
           this.reviews[index].length = this.reviews[index].pictures.length;
         });
         this.reviewsRoot = this.reviews;
-        
       }
     });
 
     this.services.getCampuses().subscribe((res) => {
       this.campuses = res;
-      if(this.campuses){
-      this.campuses.forEach((campus:Campus) => {
-        this.services.getUniversityById(campus.universityId).subscribe((uni: University) => {
-          campus.university = uni;
+      if (this.campuses) {
+        this.campuses.forEach((campus: Campus, index) => {
+          this.services
+            .getUniversityById(campus.universityId)
+            .subscribe((uni: University) => {
+              campus.university = uni;
+              if(this.campuses.length - 1 === index) {
+                this.isShow = false;
+              }
+            });
+            
         });
-      });
-      
-    }
+        
+      }
     });
 
-    if(this.userName) {this.items = [
-      {
-        label: "Trang chủ",
-        command: (event) => this.router.navigate(["/"]),
-        icon: "pi pi-home",
-        styleClass: "active",
-      },
-      // {
-      //   label: "Thông báo",
-      //   icon: "pi pi-bell",
-      //   command: (event) => this.showNotifyModal(),
-      // },
-      {
-        label: "Trang cá nhân",
-        icon: "pi pi-user",
-        command: (event) => this.showUserModal(),
-      },
-    ];}
-    else {
-    this.items = [
-      {
-        label: "Trang chủ",
-        icon: "pi pi-home",
-        command: (event) => this.router.navigate(["/"]),
-        styleClass: "active",
-      },
-    ];
+    if (this.userName) {
+      this.items = [
+        {
+          label: "Trang chủ",
+          command: (event) => this.router.navigate(["/"]),
+          icon: "pi pi-home",
+          styleClass: "active",
+        },
+        // {
+        //   label: "Thông báo",
+        //   icon: "pi pi-bell",
+        //   command: (event) => this.showNotifyModal(),
+        // },
+        {
+          label: "Trang cá nhân",
+          icon: "pi pi-user",
+          command: (event) => this.showUserModal(),
+        },
+      ];
+    } else {
+      this.items = [
+        {
+          label: "Trang chủ",
+          icon: "pi pi-home",
+          command: (event) => this.router.navigate(["/"]),
+          styleClass: "active",
+        },
+      ];
+    }
   }
-}
 
   showNotifyModal() {
     this.notifyModal = true;
