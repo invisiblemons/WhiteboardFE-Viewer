@@ -25,6 +25,9 @@ export class AuthNavbarComponent implements OnInit, OnDestroy {
   avatarUrl: string;
   name: string;
 
+  isLogin: boolean;
+  isSignUp: boolean;
+
   constructor(
     location: Location,
     private element: ElementRef,
@@ -47,6 +50,18 @@ export class AuthNavbarComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit() {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = function(){
+      return false;
+   }
+    if(this.router.url === '/auth/login') {
+      this.isLogin  =true;
+      this.isSignUp = false;
+    } else if(this.router.url === '/auth/sign-up') {
+      this.isLogin  =false;
+      this.isSignUp = true;
+    }
+
     this.userToken = this.localStorageService.getUserToken();
     let user: user = JSON.parse(this.userToken);
     if(user){

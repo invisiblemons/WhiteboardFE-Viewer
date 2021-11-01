@@ -4,7 +4,7 @@ navbar {
 .ui-fluid {
   border: 2px solid #cccccc;
   border-radius: 4px;
-  margin-left: 32px;
+  margin-left: 72px;
 }
 .form-inline {
   margin-left: 27% !important;
@@ -13,7 +13,7 @@ navbar {
 
 :host {
   ::ng-deep .p-autocomplete {
-    width: 350px;
+    width: 300px;
     .p-inputtext {
       width: 250px;
     }

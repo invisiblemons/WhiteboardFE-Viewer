@@ -126,11 +126,10 @@ export class DashboardComponent implements OnInit {
     }
     });
 
-    
-
-    this.items = [
+    if(this.userName) {this.items = [
       {
         label: "Trang chủ",
+        command: (event) => this.router.navigate(["/"]),
         icon: "pi pi-home",
         styleClass: "active",
       },
@@ -144,8 +143,18 @@ export class DashboardComponent implements OnInit {
         icon: "pi pi-user",
         command: (event) => this.showUserModal(),
       },
+    ];}
+    else {
+    this.items = [
+      {
+        label: "Trang chủ",
+        icon: "pi pi-home",
+        command: (event) => this.router.navigate(["/"]),
+        styleClass: "active",
+      },
     ];
   }
+}
 
   showNotifyModal() {
     this.notifyModal = true;
