@@ -94,6 +94,17 @@ export class DashboardComponent implements OnInit {
     }
     this.isShow = true;
 
+    this.route.queryParams.subscribe((params) => {
+      if (this.reviews) {
+        this.reviews = this.reviewsRoot;
+        this.reviews = this.reviews.filter((res) => {
+          !res.universityName.includes(params["name"]);
+        });
+      }
+    });
+
+    
+
     //get publish reviews
     this.services.getPublishedReviews().subscribe((res) => {
       if (null !== res) {
@@ -102,16 +113,7 @@ export class DashboardComponent implements OnInit {
           this.reviews[index].length = this.reviews[index].pictures.length;
         });
         this.reviewsRoot = this.reviews;
-        this.isShow = false;
-      }
-    });
-
-    this.route.queryParams.subscribe((params) => {
-      if (this.reviews) {
-        this.reviews = this.reviewsRoot;
-        this.reviews = this.reviews.filter((res) => {
-          !res.universityName.includes(params["name"]);
-        });
+        
       }
     });
 
@@ -123,6 +125,7 @@ export class DashboardComponent implements OnInit {
           campus.university = uni;
         });
       });
+      
     }
     });
 
