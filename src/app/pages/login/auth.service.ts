@@ -12,7 +12,7 @@ import { environment } from "src/environments/environment";
   providedIn: "root",
 })
 export class AuthService {
-  baseURL: string = environment.apiUrl + "/api/v1.0/admins/authenticate";
+  baseURL: string = environment.apiUrl + "/api/v1.0/reviewers/authenticate";
 
   constructor(
     private afAuth: AngularFireAuth,

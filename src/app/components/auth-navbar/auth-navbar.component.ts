@@ -65,7 +65,7 @@ export class AuthNavbarComponent implements OnInit, OnDestroy {
     this.userToken = this.localStorageService.getUserToken();
     let user: user = JSON.parse(this.userToken);
     if(user){
-      this.avatarUrl = user.avatarURL;
+      this.avatarUrl = user.avatar;
       this.name = user.name;
     }
     window.addEventListener("resize", this.updateColor);

@@ -15,7 +15,7 @@ export class DashboardService {
   constructor(private httpClient: HttpClient) { }
 
   getPublishedReviews(): Observable<Review[]> {
-    return this.httpClient.get<Review[]>(`${this.baseURL}?status=published`);
+    return this.httpClient.get<Review[]>(`${this.baseURL}?status=Published`);
   }
 
   getCampuses(): Observable<Campus[]> {

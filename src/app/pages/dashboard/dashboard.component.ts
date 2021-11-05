@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit {
     this.userToken = this.localStorageService.getUserToken();
     let user: user = JSON.parse(this.userToken);
     if (user) {
-      this.avatarUrl = user.avatarURL;
+      this.avatarUrl = user.avatar;
       this.userName = user.name;
     }
     this.isShow = true;
@@ -122,7 +122,7 @@ export class DashboardComponent implements OnInit {
             .getUniversityById(campus.universityId)
             .subscribe((uni: University) => {
               campus.university = uni;
-              if(this.campuses.length - 1 === index) {
+              if(this.campuses.length - 1=== index) {
                 this.isShow = false;
               }
             });
