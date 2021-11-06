@@ -19,6 +19,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { JwtIntercepter } from "./pages/login/jwt.interceptor";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { AngularFireStorageModule } from "@angular/fire/storage";
+import { CampaignDetailComponent } from './pages/campaign-detail/campaign-detail.component';
 
 
 

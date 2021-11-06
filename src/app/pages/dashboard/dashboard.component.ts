@@ -86,6 +86,10 @@ export class DashboardComponent implements OnInit {
     this.showUser = false;
     this.showNotify = false;
 
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
     this.userToken = this.localStorageService.getUserToken();
     let user: user = JSON.parse(this.userToken);
     if (user) {
@@ -122,13 +126,11 @@ export class DashboardComponent implements OnInit {
             .getUniversityById(campus.universityId)
             .subscribe((uni: University) => {
               campus.university = uni;
-              if(this.campuses.length - 1=== index) {
+              if (this.campuses.length - 1 === index) {
                 this.isShow = false;
               }
             });
-            
         });
-        
       }
     });
 

@@ -6,5 +6,5 @@ export class user {
   avatar?: string;
   email?: string;
   birthday?: string;
-  phoneNumbers?: number;
+  phoneNumbers?: string;
 }
