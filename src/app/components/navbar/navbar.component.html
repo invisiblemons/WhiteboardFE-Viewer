@@ -6,47 +6,49 @@
       </div>
       <div class="col-sm-8">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      
-          <div class="mr-auto ml-1 my-2" *ngIf="universities">
-                <div class="ui-fluid">
-                <p-autoComplete (onSelect)="onSelect($event)" [suggestions]="searchResult" (completeMethod)="search($event)" placeholder="Tìm bài đánh giá theo tên trường" ></p-autoComplete>
-                <div style="color: grey; padding: 0 10px; display: inline-block;"><i class="pi pi pi-search " ></i></div>
-              </div>
+
+          <div class="mr-auto ml-1 my-2" *ngIf="universitiesName">
+            <div class="ui-fluid">
+              <p-autoComplete (onSelect)="onSelect($event)" [suggestions]="searchResult" (completeMethod)="search($event)"
+               placeholder="Tìm bài đánh giá theo tên trường" >
+                
+              </p-autoComplete>
               
-              </div>
-            
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <ng-container *ngIf="userToken; else signin">
-        <div ngbDropdown class="no-caret image-dropdown">
-          <div class="nav-link" ngbDropdownToggle>
-            <div class="profile-photo-small photo">
-              <img
-                src="{{avatarUrl}}"
-                alt="Circle Image"
-                class="img-circle img-responsive img-no-padding"
-              />
+               <div style="color: grey; padding: 0 10px; display: inline-block;"><i class="pi pi pi-search "></i></div> 
             </div>
-            <span style="font-size: 16px;margin-top: 2px; margin-left: 10px;">{{name}} <i class="pi pi-angle-down"></i></span>
           </div>
-          <div ngbDropdownMenu class="dropdown-menu-right dropdown-info">
-            <a class="dropdown-item" (click)="signOut()" style="cursor:pointer;">Đăng xuất</a>
-          </div>
+
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <ng-container *ngIf="userToken; else signin">
+                <div ngbDropdown class="no-caret image-dropdown">
+                  <div class="nav-link" ngbDropdownToggle>
+                    <div class="profile-photo-small photo">
+                      <img src="{{avatarUrl}}" alt="Circle Image" class="img-circle img-responsive img-no-padding" />
+                    </div>
+                    <span style="font-size: 16px;margin-top: 2px; margin-left: 10px;">{{name}} <i
+                        class="pi pi-angle-down"></i></span>
+                  </div>
+                  <div ngbDropdownMenu class="dropdown-menu-right dropdown-info">
+                    <a class="dropdown-item" (click)="signOut()" style="cursor:pointer;">Đăng xuất</a>
+                  </div>
+                </div>
+              </ng-container>
+              <ng-template #signin>
+                <button pButton pRipple type="button" label="Đăng ký" [routerLink]="['/auth/sign-up']"
+                  class="mr-2 p-button-sm"></button>
+                <button pButton pRipple type="button" label="Đăng nhập" [routerLink]="['/auth']"
+                  class="p-button-outlined p-button-sm"></button>
+              </ng-template>
+
+            </li>
+          </ul>
         </div>
-      </ng-container>
-      <ng-template #signin>
-        <button pButton pRipple type="button" label="Đăng ký" [routerLink]="['/auth/sign-up']" class="mr-2 p-button-sm"></button>
-        <button pButton pRipple type="button" label="Đăng nhập" [routerLink]="['/auth']" class="p-button-outlined p-button-sm"></button>
-      </ng-template>
-      
-    </li>
-  </ul>
-</div>
       </div>
       <div class="col-sm-2 "></div>
     </div>
-    
-    
-    
+
+
+
   </div>
 </nav>

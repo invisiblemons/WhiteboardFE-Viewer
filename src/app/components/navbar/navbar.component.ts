@@ -32,6 +32,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   userToken: string;
 
+  selectedUni: string;
+
   //information admin
   avatarUrl: string;
   name: string;
@@ -87,15 +89,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.router.navigate(['/auth']);
   }
 
-  onSelect(event) {
-      this.router.navigate(['/dashboard'], { queryParams: { name: event} });
+  onSelect($event) {
+      this.router.navigate(['/'], { queryParams: { name: $event} });
+      console.log("hello" + $event);
   }
 
-  search(event) {
+
+  search($event) {
     this.searchResult = [];
     this.universitiesName.forEach(name => {
-      if(name.includes(event.query)) {
-        this.searchResult.push(name);
+      if(name.toLocaleLowerCase().includes($event.query)) {
+         this.searchResult.push(name);
+        console.log(this.searchResult);
       }
     });
 }

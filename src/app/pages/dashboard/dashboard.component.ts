@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { MenuItem } from "primeng/api";
 import { LocalStorageService } from "../login/local-storage.service";
@@ -54,11 +54,13 @@ export class DashboardComponent implements OnInit {
   uniId: string;
   campuses: Campus[];
 
+  resultReview: Review[] = [];
+
   constructor(
     private services: DashboardService,
     private localStorageService: LocalStorageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
   ) {
     this.responsiveOptions = [
       {
@@ -87,7 +89,7 @@ export class DashboardComponent implements OnInit {
     this.showNotify = false;
 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      return false;
+      return true;
     };
 
     this.userToken = this.localStorageService.getUserToken();
@@ -98,16 +100,10 @@ export class DashboardComponent implements OnInit {
     }
     this.isShow = true;
 
-    this.route.queryParams.subscribe((params) => {
-      if (this.reviews) {
-        this.reviews = this.reviewsRoot;
-        this.reviews = this.reviews.filter((res) => {
-          !res.universityName.includes(params["name"]);
-        });
-      }
-    });
+    
 
     //get publish reviews
+    
     this.services.getPublishedReviews().subscribe((res) => {
       if (null !== res) {
         this.reviews = res["reviews"];
@@ -115,8 +111,30 @@ export class DashboardComponent implements OnInit {
           this.reviews[index].length = this.reviews[index].pictures.length;
         });
         this.reviewsRoot = this.reviews;
+        this.route.queryParams.subscribe((params) => {
+          this.reviews = this.reviewsRoot;
+          
+          if (this.reviews && params["name"]) {
+            
+            this.reviews.forEach((review: Review) => {
+              if (review.universityName === params["name"]) {
+                this.resultReview.push(review);
+              }
+              
+            });
+            this.reviews = this.resultReview;
+            console.log(this.resultReview);
+            if(this.reviews) {
+              this.router.routeReuseStrategy.shouldReuseRoute = function () {
+                return false;
+              };
+            }
+           
+          }
+        });
       }
     });
+
 
     this.services.getCampuses().subscribe((res) => {
       this.campuses = res;
@@ -163,6 +181,8 @@ export class DashboardComponent implements OnInit {
         },
       ];
     }
+
+    
   }
 
   showNotifyModal() {
