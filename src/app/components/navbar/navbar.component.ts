@@ -61,12 +61,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit() {
-    this.userToken = this.localStorageService.getUserToken();
-    let user: user = JSON.parse(this.userToken);
-    if(user){
-      this.avatarUrl = user.avatar;
-      this.name = user.name;
-    }
+    // this.userToken = this.localStorageService.getUserToken();
+    // let user: user = JSON.parse(this.userToken);
+    // if(user){
+    //   this.avatarUrl = user.avatar;
+    //   this.name = user.name;
+    // }
     window.addEventListener("resize", this.updateColor);
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName("navbar-toggler")[0];
@@ -91,16 +91,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   onSelect($event) {
       this.router.navigate(['/'], { queryParams: { name: $event} });
-      console.log("hello" + $event);
   }
 
 
   search($event) {
     this.searchResult = [];
     this.universitiesName.forEach(name => {
-      if(name.toLocaleLowerCase().includes($event.query)) {
+      if(name.toLocaleLowerCase().includes($event.query.toLocaleLowerCase())) {
          this.searchResult.push(name);
-        console.log(this.searchResult);
       }
     });
 }

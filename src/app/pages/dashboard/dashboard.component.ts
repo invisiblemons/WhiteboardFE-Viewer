@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
     private services: DashboardService,
     private localStorageService: LocalStorageService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {
     this.responsiveOptions = [
       {
@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit {
     this.showNotify = false;
 
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
-      return true;
+      return false;
     };
 
     this.userToken = this.localStorageService.getUserToken();
@@ -100,10 +100,8 @@ export class DashboardComponent implements OnInit {
     }
     this.isShow = true;
 
-    
-
     //get publish reviews
-    
+
     this.services.getPublishedReviews().subscribe((res) => {
       if (null !== res) {
         this.reviews = res["reviews"];
@@ -113,28 +111,18 @@ export class DashboardComponent implements OnInit {
         this.reviewsRoot = this.reviews;
         this.route.queryParams.subscribe((params) => {
           this.reviews = this.reviewsRoot;
-          
+
           if (this.reviews && params["name"]) {
-            
             this.reviews.forEach((review: Review) => {
               if (review.universityName === params["name"]) {
                 this.resultReview.push(review);
               }
-              
             });
             this.reviews = this.resultReview;
-            console.log(this.resultReview);
-            if(this.reviews) {
-              this.router.routeReuseStrategy.shouldReuseRoute = function () {
-                return false;
-              };
-            }
-           
           }
         });
       }
     });
-
 
     this.services.getCampuses().subscribe((res) => {
       this.campuses = res;
@@ -165,11 +153,11 @@ export class DashboardComponent implements OnInit {
         //   icon: "pi pi-bell",
         //   command: (event) => this.showNotifyModal(),
         // },
-        {
-          label: "Trang cá nhân",
-          icon: "pi pi-user",
-          command: (event) => this.showUserModal(),
-        },
+        // {
+        //   label: "Trang cá nhân",
+        //   icon: "pi pi-user",
+        //   command: (event) => this.showUserModal(),
+        // },
       ];
     } else {
       this.items = [
@@ -181,8 +169,6 @@ export class DashboardComponent implements OnInit {
         },
       ];
     }
-
-    
   }
 
   showNotifyModal() {

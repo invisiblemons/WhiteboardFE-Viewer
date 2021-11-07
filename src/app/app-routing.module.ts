@@ -28,21 +28,21 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'auth',
-        pathMatch: 'full'
-      },
-      {
-        path: 'auth',
-        loadChildren: () => import('./pages/login/auth.module').then(m => m.AuthModule)
-      }
-    ]
-  }
+  // {
+  //   path: '',
+  //   component: AuthLayoutComponent,
+  //   children: [
+  //     {
+  //       path: '',
+  //       redirectTo: 'auth',
+  //       pathMatch: 'full'
+  //     },
+  //     {
+  //       path: 'auth',
+  //       loadChildren: () => import('./pages/login/auth.module').then(m => m.AuthModule)
+  //     }
+  //   ]
+  // }
 ];
 
 @NgModule({
