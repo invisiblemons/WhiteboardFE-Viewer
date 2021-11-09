@@ -25,8 +25,14 @@ export class CampaignDetailComponent implements OnInit {
       this.services.getReviews(this.campaignId).subscribe((res) => {
         if(res) {
           this.reviews = res["reviews"];
+          if (this.reviews) {
+            this.reviews.forEach((review, index) => {
+              this.reviews[index].length = this.reviews[index].pictures.length;
+            });
+          }
+          this.isShow = false;
         }
-        this.isShow = false;
+        
       })
     });
   }
